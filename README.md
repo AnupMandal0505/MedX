@@ -51,7 +51,4 @@ git clone https://github.com/MedX23/Medx
 [Anurag  Mandal](https://github.com/AnupMandal0505)
 [Soumyajit Pal ](https://github.com/Soumyajit001)
 [Ritam Biswas ](https://github.com/Ritambiswas007)
-=======
-# Dermatology Manifestations  
 
->>>>>>> ffe23e483de275a2b0422a671f0d05597d51cf32
