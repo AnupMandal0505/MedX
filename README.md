@@ -16,8 +16,6 @@ The live site is not yet deployed, we are working towards it .
 
 - **Chat Bot** - Get a personalised chat bot for all your medical doubts with you at every step.
 
-- **Mental Health** - answer some basic questions regarding how you feel and can get advice and recommendations to read certain books and see other resources for self development.
-
 *Ours devs are working on more new and exciting features*
 
 *Insert feature collage*
