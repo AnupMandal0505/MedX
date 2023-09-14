@@ -1,6 +1,6 @@
 # MedX
 
-MedX is a web application where you can come with your Dematological conditions such as Skin Lesions and other manifestations and we use a specialised CNN model to provide a priliminary diagnosis. From there on, you may book an appointment with our highly specialised Doctors, get in-depth diagnosis and prescripsions for further Tests, Medicins and what not. Our app has it all.
+MedX is a web application where you can come with your Dematological conditions such as Skin Lesions and other manifestations and we use a specialised CNN model to provide a priliminary diagnosis. From there on, you may book an appointment with our highly specialised Doctors, get in-depth diagnosis and prescripsions for further Tests, Medicines and what not. Our app has it all.
 
 *Insert Landing Page screenshot*
 
