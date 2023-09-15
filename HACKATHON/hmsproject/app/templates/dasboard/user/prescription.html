@@ -1,0 +1,165 @@
+{% extends 'dasboard/base.html' %}
+{% block style %}
+<style>
+  :root {
+    --black: #000;
+    --darkgreen: #31b085;
+    --green: #B6E2A1;
+    --white: #fff;
+    --grey: rgb(135, 126, 126);
+  }
+
+
+  .prescription-wrapper{
+    width: 90%;
+    background-color: var(--white);
+    margin-top: 15px;
+    padding-top: 5px;
+    border-radius: 5px;
+  }
+  
+  .prescription-wrapper-head .logo p{
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  .prescription-wrapper-head h4{
+    font-size: 1rem;
+    color:var(--black);
+  }
+
+  .prescription-wrapper-head h4 small{
+    font-size: 1rem;
+    color: var(--grey);
+  }
+
+  .prescription-wrapper-head h4 small span{
+    /* font-size: 1.1rem; */
+    color: var(--black);
+  }
+  .prescription-wrapper-head p{
+    font-size: 1rem;
+    color: var(--grey);
+  }
+  .prescription-wrapper-head p span{
+    font-size: 1.1rem;
+    color: var(--black);
+  }
+
+  .prescription-wrapper-head .date{
+    text-align: right;
+    
+  }
+
+  .prescription-wrapper-bottom .header{
+    width: 100%;
+    padding: 8px;
+    background-color: var(--darkgreen);
+    text-align: center;
+    color:var(--black);
+
+    /* margin: 10px 0 0 0; */
+    
+  }
+
+  .prescription-wrapper-bottom p{
+    border: 2px solid var(--black);
+    border-radius: 5px;
+    word-wrap: break-word;
+  }
+
+  .btn{
+    background-color: var(--darkgreen);
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .btn:hover{
+    background-color:green;
+    color: var(--white);
+  }
+
+</style>
+{% endblock style %}
+
+
+{% block body %}
+
+<div class="container prescription-wrapper" id="generate_pdf">
+  <div class="row prescription-wrapper-head">
+    <div class="col-sm-6">
+      <div class="logo">
+        <img src="https://cdn.pixabay.com/photo/2016/10/18/05/52/android-logo-1749407_640.png" style="width: 50px; height: 50px;" />
+        <p class="navbar-brand heading">HMS</p>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <h4>{{data.patient_ref.doctor}}</h4>
+      <h4><small>Speciality</small></h4>
+      <h4><small>Mb: <span>0XXXXXXXXX</span></small></h4>
+    </div>
+    <div class="col-sm-12">
+      <p>Patient ID: <span>{{data.patient_id}}</span></p>
+    </div>
+    <div class="col-sm-12">
+      <p>Patient Name: <span>{{data.patient_ref.appointment_ref.name}}</span></p>
+    </div>
+    <div class="col-sm-12">
+      <p>Gender: <span>Male</span></p>
+    </div>
+    <div class="col-sm-12">
+      <p>Age: <span>20</span></p>
+    </div>
+    <div class="col-sm-12 date"><p>Date: <span>{{data.patient_ref.date}}</span></p></div>
+  </div>
+  <hr>
+
+
+    <div class="row prescription-wrapper-bottom">
+      <div class="col">
+        <h4 class="header"><b>Symptoms</b></h4>
+        <p>{{data.problem}}</p>
+        <h4 class="header"><b>Tests</b></h4>
+        <p>{{data.suggestion_test}}</p>
+        <h4 class="header"><b>Advice</b></h4>
+        <p>{{data.medicine}}</p>
+      </div>
+      <div class="col" style="border-left: 2px solid var(--grey);">
+        <span style="font-size: 3em;">R<sub>x</sub></span>
+        <hr>
+        <p>{{data.medicine}}</p>
+      </div>
+      <hr style="margin-top: 5px;">
+      <div class="col-sm-12 d-flex justify-content-center">
+        <button class="btn btn-info" id="printButton" onclick="print()">Download</button>
+      </div>
+    </div>
+</div>
+{% endblock body %}
+
+
+
+{% comment %} pdf generate {% endcomment %}
+{% block js %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script type="text/javascript">
+  window.jsPDF = window.jspdf.jsPDF;
+  var docPDF = new jsPDF();
+  function print() {
+    var elementHTML = document.querySelector("#generate_pdf");
+
+    docPDF.html(elementHTML, {
+      callback: function (docPDF) {
+        docPDF.save('{{data.patient_id}}');
+      },
+      x: 15,
+      y: 15,
+      width: 170,
+      windowWidth: 650
+    });
+  }
+</script>
+{% endblock js %}

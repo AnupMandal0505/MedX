@@ -1,0 +1,33 @@
+{% extends 'dasboard/base.html' %}
+
+{% block body %}
+<div class="container-fluid mt-3">
+  <h2>History</h2>
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Payment id</th>
+        <th>Amount</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% if data %}
+        {% for i in data %}
+            <tr>
+                <td>{{i.order_id}}</td>
+                <td>{{i.payment_id}}</td>
+                <td>{{i.amount}}</td>
+                <td>{{i.date}}</td>
+                <td><a href="payment/{{i.order_id}}" class="btn btn-success">View</a></td>
+            </tr>
+        {% endfor %}
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}
+

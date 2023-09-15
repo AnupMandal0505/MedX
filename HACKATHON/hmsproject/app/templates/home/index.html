@@ -1,0 +1,121 @@
+{% extends 'home/base.html' %}
+
+{% block title %} HOME{% endblock title %}
+
+{% block style %}
+<style>
+  .main{
+      position: relative;
+      background-color: #ffff;
+      opacity: 0.5;
+  
+  }
+  .main-body{
+      position: absolute; 
+      text-align: center;   
+      top: 50%;
+  }
+  
+  </style>
+{% endblock style %}
+
+{% block body %}
+{% comment %} <div class="container-fluid">
+<form action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label for="fname">photo:</label><br>
+  <input type="file" id="fname" name="photo"><br>
+  <button type="submit">Submit</button>
+</form>
+
+</div> {% endcomment %}
+<div class="container-fluid main">
+  <div class="row">
+     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmnPT5Tr1lUEiM8rPcUH7_VWWPFw-m2CTXsQ&usqp=CAU" alt="" sizes="" srcset="">
+     <div class="main-body">
+      <button class="btn btn-success">Register</button>
+     </div>
+  </div>
+
+  {% comment %} <div class="row">
+    <form action=" " method="post" enctype="multipart/form-data"  id="signup-form">
+      {% csrf_token %}
+      <div class="form-group">
+        <label >Photo:</label>
+        <input type="file" id="file" class="form-control" name="file">
+      </div>
+      <p id="message"></p>
+      <button id="submit-button" type="submit" class="btn btn-primary">Signup</button>
+    </form>
+  </div>
+</div> {% endcomment %}
+
+
+<form action="{% url "prediction" %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+    <div class="mb-3 mt-3">
+      <label class="form-label">Image 1:</label>
+      <input type="file" class="form-control" placeholder="Enter 1st Image" name="img1">
+    </div>
+    <div class="mb-3 mt-3">
+      <label class="form-label">Image 2:</label>
+      <input type="file" class="form-control" placeholder="Enter 2nd Image" name="img2">
+    </div>
+    <div class="mb-3 mt-3">
+      <label class="form-label">Image 3:</label>
+      <input type="file" class="form-control" placeholder="Enter 3rd Image" name="img3">
+    </div>
+    <div class="mb-3 mt-3">
+      <label class="form-label">Image 4:</label>
+      <input type="file" class="form-control" placeholder="Enter 4th Image" name="img4">
+    </div>
+    <div class="mb-3 mt-3">
+      <label class="form-label">Image 5:</label>
+      <input type="file" class="form-control" placeholder="Enter 5th Image" name="img5">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+<!-- Container end -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+<script>
+
+
+	$(document).ready(function () {
+
+		$('#signup-form').submit(function(event) {
+    	
+			fileName = document.querySelector('#file').value;
+			let filename = fileName.toLowerCase();
+      extension = filename.substring(filename.lastIndexOf('.') + 1);
+   
+  
+    if ('jpg' == extension || 'jpeg' == extension) {
+
+      $("#signup-form").submit();
+      return;
+    }
+	else{
+
+		event.preventDefault();
+		
+		$("#message").text("jpg not formate");
+		$("#message").addClass("text-danger");
+		// $("#signup-form").submit();
+		return;
+	}
+
+ 
+})
+
+	});
+</script>
+
+
+
+
+{% endblock body %}

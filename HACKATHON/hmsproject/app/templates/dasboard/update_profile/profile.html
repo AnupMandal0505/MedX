@@ -1,0 +1,59 @@
+{% extends 'dasboard/base.html' %}
+{% load static %}
+{% block style %}
+
+<style>
+    h4{
+        color: black;
+    }
+    p{
+        border:2px solid black;
+        text-align:center;
+    }
+</style>
+{% endblock style %}
+
+
+{% block body %}
+
+<div class="container mt-3">
+    <h2>Profile</h2>
+    <div class="card">
+      <div class="card-body">
+        {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 150px; height: 150px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 150px; height: 150px;">{% endif %}
+        <div class="row">
+            <div class="col-md-4">
+                <h4>User ID:</h4><br>
+                <p>{{request.user}}</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Name:</h4><br>
+                <p>{{request.user.name}}</p>
+            </div>
+            <div class="col-md-4">
+                <h4>City:</h4><br>
+                <p>{{request.user.city}}</p>
+            </div>
+            <div class="col-md-4">
+                <h4>Email:</h4><br>
+                <p>{{request.user.email}}</p>
+            </div>
+        </div>
+
+        <button onclick="myFunction()" class=" btn btn-info cancelbtn">Edit</button>
+
+      </div>
+    </div>
+  </div>
+  
+{% endblock body %}
+
+
+{% block js %}
+<script>
+    function myFunction() {
+      location.replace("http://127.0.0.1:8000/edit_profile")
+    }
+</script>
+{% endblock js %}
+

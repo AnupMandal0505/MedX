@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Dasboard</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'dasboard/image/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'dasboard/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dasboard/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'dasboard/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Table Pagination Part 1-->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- Table Pagination Part 1-->
+
+    
+
+    {% block head %}{% endblock head %}
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'dasboard/css/base.css' %}"  rel="stylesheet">
+
+</head>
+<style>
+
+    
+/*  Update Password css............. popup..... */
+
+
+/* The popup form - hidden by default */
+.form-popup {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: var(--dark);
+    z-index: 9;
+
+}
+
+/* Add styles to the form container */
+.form-popup .card {
+    width: 40%;
+    padding: 10px;
+    margin: 200px 0 0 30%;
+    opacity: 1;
+}
+
+.form-popup .card h1 {
+    color: var(--dark);
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+    .card {
+        width: 80%;
+        margin-left: 10%;
+    }
+}
+</style>
+{% block style %}{% endblock style %}
+<body>
+
+    <div class="form-popup" {% if 1 == request.user.status  %} style="display:none;"{% endif %}>
+        <div class="card">
+            <form action="{% url 'update_password' %}" method="post">
+                {% csrf_token %}
+                <h1>Update Password</h1>
+                <div class="mb-3 mt-3">
+                    <label class="form-label">User Id:</label>
+                    <input type="text" class="form-control" placeholder="Enter User Id" name="user_id">
+                </div>
+                <div class="mb-3">
+                    <label for="pwd" class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+    
+  
+    <div class="container-fluid position-relative d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+    
+        
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-secondary navbar-dark">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>HMS</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 40px; height: 40px;"> {% else %}<img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 40px; height: 40px;">{% endif %}
+
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">{{request.user.name}}</h6>
+                        <span> {{request.user.user_type}}</span>
+                    </div>
+                </div>
+                <div class="navbar-nav w-100">
+                    <a href="/dasboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                        <a href="update_profile" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Profile</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="/profile" class="dropdown-item">Profile</a>
+                            <a href="/edit_profile" class="dropdown-item">Edit Profile</a>
+                            <a href="/update_password" class="dropdown-item">Change Password</a>
+                        </div>
+                    </div>
+
+                    
+                    {% if request.user.user_type == "doctor"  %}
+                    <a href="/today_appointment" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Appointment</a>
+                    <a href="/all_appointment" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>History</a>
+            
+                    {% elif request.user.user_type == "technician" %}
+                        {% comment %} add member {% endcomment %}
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Add Member</a>
+                            <div class="dropdown-menu bg-transparent border-0">
+                                <a href="/add_member/user" class="dropdown-item">Add User</a>
+                                <a href="/add_member/doctor" class="dropdown-item">Add Doctor</a>
+                                <a href="/add_member/technician" class="dropdown-item">Add technician</a>
+                            </div>
+                            <a href="/user_data" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>User History</a>
+                            <a href="/payment" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Payment</a>
+                        </div>
+                    {% comment %} add member end {% endcomment %}
+                    {% else %}
+                        <a href="/appointment" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Appointment</a>
+                        <a href="/appointment_history" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>History</a>
+                        <a href="/payment_history" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Payment History</a>
+                        <a href="" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Download</a>
+
+                    {% endif %}
+                    <a href="/signout" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Logout</a>
+
+
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                </form>
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-envelope me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Message</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{% static 'dasboard/image/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{% static 'dasboard/image/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <div class="d-flex align-items-center">
+                                    <img class="rounded-circle" src="{% static 'dasboard/image/user.jpg' %}" alt="" style="width: 40px; height: 40px;">
+                                    <div class="ms-2">
+                                        <h6 class="fw-normal mb-0">Jhon send you a message</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all message</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <i class="fa fa-bell me-lg-2"></i>
+                            <span class="d-none d-lg-inline-flex">Notificatin</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Profile updated</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">New user added</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item">
+                                <h6 class="fw-normal mb-0">Password changed</h6>
+                                <small>15 minutes ago</small>
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-center">See all notifications</a>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 40px; height: 40px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 40px; height: 40px;">{% endif %}
+
+                            {% comment %} <img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 40px; height: 40px;"> {% endcomment %}
+                            <span class="d-none d-lg-inline-flex">{{request.user.name}}</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="#" class="dropdown-item">Settings</a>
+                            <a href="/signout" class="dropdown-item">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+            {% block body %}{% endblock body %}
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            Designed By <a href="">Anurag Kumar</a>
+                            <br>Distributed By: <a href="" target="_blank">Anurag</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        
+
+
+       
+    </div>
+
+    {% block js %}{% endblock js %}
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'dasboard/lib/chart/chart.min.js' %}"></script>
+    <script src="{% static 'dasboard/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'dasboard/lib/waypoints/waypoints.min.js' %}"></script>
+    <script src="{% static 'dasboard/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'dasboard/lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'dasboard/lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'dasboard/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'dasboard/js/main.js' %}"></script>
+
+
+
+
+     <!-- Table Pagination Part 2-->
+     <script>
+        new DataTable('#example', {
+    pagingType: 'full_numbers'
+    });
+    </script>
+
+    <!-- Table Pagination Part 2-->
+
+</body>
+
+</html>

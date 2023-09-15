@@ -1,0 +1,109 @@
+{% extends 'dasboard/base.html' %}
+
+{% block style %}
+
+<style>
+    h4{
+        color: black;
+    }
+    p{
+        border:2px solid black;
+        text-align:center;
+    }
+</style>
+{% endblock style %}
+
+
+{% block body %}
+
+<div class="container mt-3">
+    <h2>Edit Profile</h2>
+    <div class="card">
+      <div class="card-body">
+        <form action=" " id="edit_profile" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col">
+              <input type="file" id="file" class="form-control" name="profile">
+              
+              <p id="message"></p>
+            </div>
+            
+            <div class="col">
+              <input type="text" class="form-control" value="{{request.user.name}}" name="name">
+            </div>
+          </div>
+          <div class="row mt-5">
+            <div class="col">
+              <input type="text" class="form-control" value="{{request.user.email}}" name="email">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" value="{{request.user.city}}"  name="city">
+            </div>
+          </div>
+
+          <div class="row mt-5">
+            <div class="col">
+              <button onclick="myFunction()" class=" btn btn-info cancelbtn">Cancel</button>
+            </div>
+            <div class="col">
+              <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+  
+{% endblock body %}
+
+
+{% block js %}
+<!-- Container end -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+
+<script>
+
+
+	$(document).ready(function () {
+
+		$('#edit_profile').submit(function(event) {
+    	
+			fileName = document.querySelector('#file').value;
+			let filename = fileName.toLowerCase();
+      extension = filename.substring(filename.lastIndexOf('.') + 1);
+   
+  
+    if ('jpg' == extension || 'jpeg' == extension) {
+
+      $("#edit_profile").submit();
+      return;
+    }
+	else{
+
+		event.preventDefault();
+		
+		$("#message").text("jpg not formate");
+		$("#message").addClass("text-danger");
+		// $("#signup-form").submit();
+		return;
+	}
+
+ 
+})
+
+	});
+</script>
+
+
+<script>
+    function myFunction() {
+      location.replace("http://127.0.0.1:8000/dasboard")
+    }
+</script>
+{% endblock js %}
+

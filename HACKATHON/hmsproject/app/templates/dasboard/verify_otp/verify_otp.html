@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Verify Otp</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+         <!-- Including Bootstrap CSS -->
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+      
+      
+          <!-- Including jQuery Auto close Alert -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js">
+          </script>
+      
+          <!-- Including Bootstrap JS -->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+            <!-- Use ajax data transfer -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+      </head>
+<body>
+    {% if messages %}
+   
+    {% for message in messages %}
+        
+      <div id="alert" class="alert {% if message.tags == "success" %} alert-success {% elif message.tags == "warning" %} alert-danger{% else %} alert-info{% endif %} alert-dismissible fade show" id="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>{{ message }}</strong>  </div>
+
+    {% endfor %}
+  
+  {% endif %}
+
+  <div class="container mt-3">
+    <h2>Verify OTP</h2>
+    
+      <div class="mb-3 mt-3">
+        <label for="otp">OTP:</label>
+        <input type="number" class="form-control" id="otp" placeholder="Enter OTP" name="user_otp">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    
+  </div>
+
+  
+
+  <script>
+
+    $('#otp').change(function () {
+
+        let otp = $('#otp').val();
+
+        if (otp == '{{otp}}') {
+
+            $.ajax({
+
+                type: "POST",
+
+                url: '{% url "VerifyPasswordOtp" %}',
+
+                data: { 'user_id': "{{user_id}}", 'password': "{{password}}" },
+
+                success: function (data) {
+
+                    window.location.href = "/signin"
+
+                }
+
+            })
+
+        }
+
+        else{
+            $.ajax({
+
+                success: function (data) {
+
+                    window.location.href = "/update_password"
+
+                }
+
+            })
+        }
+
+    })
+
+</script>
+
+<script type="text/javascript">
+    setTimeout(function () {
+
+        // Closing the alert
+        $('#alert').alert('close');
+    }, 3000);
+</script>
+</body>
+</html>

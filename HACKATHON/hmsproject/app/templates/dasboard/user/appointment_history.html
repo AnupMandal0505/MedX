@@ -1,0 +1,45 @@
+{% extends 'dasboard/base.html' %}
+
+
+{% comment %} {% block head %}
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+{% endblock head %} {% endcomment %}
+
+
+{% block body %}
+
+<div class="container bg-white mt-5 p-5 ">
+  <h2 style="color: black;">Appointment History</h2>
+  <table id="example"  style="width:100%;" class="table display table-dark table-striped p-4">
+    <thead>
+      <tr>
+        <th>Appointment Id</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th> Report </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in user_history %}
+      <tr>
+        <td>{{i.appointment_id}}</td>
+                <td>{{i.doctor}}</td>
+                <td>{{i.date}}</td>
+                <td><a href="appointment_letter/{{i.appointment_id}}" class="btn btn-success">View</a></td>   
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock body %}
+
+{% block js %}
+{% comment %} <script>
+    new DataTable('#example', {
+pagingType: 'full_numbers'
+});
+</script> {% endcomment %}
+{% endblock js %}
