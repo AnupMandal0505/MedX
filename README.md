@@ -22,7 +22,7 @@ The live site is not yet deployed, we are working towards it .
 
 ## Tech Stack
 
-**Frontend:** React
+**Frontend:** HTML, CSS, JavaScript
 
 **Machine Learning** Tensorflow, Keras
 
@@ -37,7 +37,7 @@ Make sure you have npm package installed on your computer
 Open your cli and clone the repository
 
 ```bash
-git clone https://github.com/MedX23/Medx
+git clone https://github.com/MedX23/MedX
 ```
 
 ## Team MedX
