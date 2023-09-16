@@ -1,0 +1,255 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgreen;
+}
+
+.container{
+    padding: 30px;
+    margin: 0 15px;
+    position: relative;
+    max-width: 900px;
+    width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+.container header{
+    position: relative;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #333;
+}
+
+.container header::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 67px;
+    border-radius: 10px;
+    background-color: #4070f4;
+}
+
+.container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: white;
+    overflow: hidden
+}
+
+/* .container form .form{
+    position: absolute;
+    background-color: #fff;
+} */
+
+/* .container form .form.second{
+    opacity: 0;
+    pointer-events: none;
+} */
+
+form.secActive .form.first{
+    opacity: 0;
+    pointer-events: none;
+}
+
+form.secActive .form.second{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.container form .title{
+    display: block;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 6px 0;
+    color: #333; 
+}
+
+.container form .field{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+form .field .input_field{
+    display: flex;
+    width: calc(100% / 3 - 30px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+.input_field label{
+    font-size: 15px;
+    color: #2e2e2e;
+}
+
+.input_field input{
+    padding: 0 15px;
+    height: 35px;
+    margin: 8px 0;
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #271b1b;
+    font-size: 14px;
+    outline: none;
+}
+
+.input_field input:is(:focus, :valid){
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.input_field input[type="data"]{
+    color: #333;
+}
+
+.input_field input[type="data"]:valid{
+    color: #333;
+}
+
+.input_fields{
+    margin-right: 51%;
+}
+
+.input_fields label{
+    margin-bottom: 7px;
+    font-size: 16px;
+    color: #2e2e2e;
+    justify-content: center;
+    display: block;
+}
+
+.input_fields input{
+    border: 1px solid #333;
+    border-radius: 4px;
+    color: #271b1b;
+    font-size: 10px;
+    outline: none;
+    margin: 2px;
+}
+
+.container form .btnText{
+    margin: 0 10px;
+    font-size: 17px;
+}
+
+.container form i{
+    margin: 0 10px;
+    font-size: 20px;
+}
+
+.container form button, .backBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    margin: 25px 0;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #213e8d;
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+form button:hover{
+    background-color: #265df2;
+}
+
+form .backBtn:hover{
+    background-color: #265df2;
+}
+
+form .buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .buttons button, .backBtn{
+    margin-right: 15px;
+}
+
+.container form .upload{
+    margin: 10px 0;
+}
+
+.container form .form-group{
+    padding: 19px 15px;
+    display: flex;
+}
+
+.form-group label{
+    margin-right: 45px;
+    font-size: 19px;
+    margin-top: 55px;
+}
+
+.form-group input{
+    border: 2px;
+    padding: 19px 0;
+    margin-top: 40px;
+}
+
+#display_image{
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image1{
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-position: cover;
+    background-size: cover;
+}
+
+@media (max-width: 750px) {
+    .container form{
+        overflow-y: scroll;
+    }
+    .container form::-webkit-scrollbar{
+        display: none;
+    }
+    form .field .input_field{
+        width: calc(100% - 15px);
+    }
+    
+}
+
+@media(max-width: 550px){
+    form .fields .input-field{
+        width: 100%
+    }
+    #display_image{
+        display: none;
+    }
+    #display_image1{
+        display: none;
+    }
+}
+
+
+
+
