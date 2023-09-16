@@ -34,11 +34,6 @@ body {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-h3{
-  text-align: center;
-}
-
-
 .inline{
 	display:inline-block;
 }
@@ -47,11 +42,12 @@ h3{
 form {
   /* width: 60%;  */
   border: 3px solid var(--white); 
-  position: absolute; 
+  position: absolute;
+  padding-bottom: 10px; 
   /* left: 5%; */
 
 }
-input[type=text], input[type=password] {
+input[type=text]{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -92,10 +88,6 @@ img.med {
   padding: 16px;
 }
 
-span.psw {
-  float: right;
-  padding-top: 16px;
-}
 
 /*scroll btn*/
 #myBtn {
@@ -132,8 +124,8 @@ span{
 }
 @media (min-width: 900px) {
   form {
-  width: 30%; 
-  left: 35%;
+  width: 50%; 
+  left: 25%;
   }
 }
 /* Change styles for span and cancel button on extra small screens */
@@ -218,37 +210,7 @@ span{
 
 
   </form>
-<!--scroll btn-->
-<button onclick="topFunction()" id="myBtn" title="Go to Top">^</button>
 
-<script>
-  //for password visibility
-  function myFunction1() {
-    var x = document.getElementById("myInput1");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-// When the user scrolls down 20px from the top of the document, show the button
-    let mybutton = document.getElementById("myBtn");
-    window.onscroll = function() {scrollFunction()};
-    function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        mybutton.style.display = "block";
-      } else {
-        mybutton.style.display = "none";
-      }
-    }
-    
-    // When the user clicks on the button, scroll to the top of the document
-    function topFunction() {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-</script>
-  
 </body>
 </html>
 
