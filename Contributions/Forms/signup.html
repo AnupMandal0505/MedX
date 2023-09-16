@@ -228,7 +228,7 @@ span{
     <div class="row">
       <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
         <label for="phn"><b>Phone Number  <span>*</span></b></label>
-        <input type="text" placeholder="Enter Phone Number" name="phn" required>
+        <input type="text" placeholder="Enter Phone Number" name="phn" pattern="[0-9]{10}" required>
       </div>
       <div class=" col-md-7 col-md-7 col-lg-7 col-xl-7">
         <label for="email"><b>Email  <span>*</span></b></label>
@@ -428,20 +428,20 @@ function passwordConfirmation() {
     } 
 }
 
-//to validate phone number
-function phonenumber(inputtxt)
-{
-  var phoneno = /^\d{10}$/;
-  if(inputtxt.value.match(phoneno))
-  {
-      return true;
-  }
-  else
-  {
-     alert("Not a valid Phone Number");
-     return false;
-  }
-}
+// //to validate phone number
+// function phonenumber(inputtxt)
+// {
+//   var phoneno = /^\d{10}$/;
+//   if(inputtxt.value.match(phoneno))
+//   {
+//       return true;
+//   }
+//   else
+//   {
+//      alert("Not a valid Phone Number");
+//      return false;
+//   }
+// }
 
 </script>
 </body>
