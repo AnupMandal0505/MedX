@@ -65,11 +65,11 @@ class register(View):
     
     def post(self, request):
         if request.method == 'POST':
-            print(12)
+            first_name=request.POST['first_name']
+            last_name=request.POST['last_name']
             email=request.POST['email']
-            name=request.POST['name']
-            city=request.POST['city']
-
+            phone=request.POST['phone']
+            
             try:
                 user=User.object.get(email=email)
                 messages.warning(request, 'Already Register !')
@@ -99,7 +99,7 @@ class register(View):
                         password=user_id
                         mail(user_id,password,email)
                         password=make_password(password)
-                        ab = User.object.create(user_id=user_id,email=email, password=password, name=name,user_type=user_type,city=city,profile=profile,status=0)
+                        ab = User.object.create(user_id=user_id, first_name=first_name, last_name=last_name, email=email, phone=phone, user_type=user_type, profile=profile, password=password, status=0)
                 
                         ba = Department.objects.create(dept_ref=ab,dept_id=dept_id,position=position,qualification=qualification,pan=pan,salary=salary,signature=signature)
                     
@@ -109,18 +109,19 @@ class register(View):
                     user_type="user"
                     user_id=user_unique_number(user_type)
                     password=request.POST['password']
-                    otp=random.randint(100000,999999)
+                    otp=random.randint(1000,9999)
                     context={
-                        'otp':otp,
                         'user_id':user_id,
+                        'first_name':first_name,
+                        'last_name':last_name,
                         'email':email,
-                        'name':name,
-                        'city':city,
+                        'phone':phone,
                         'user_type':user_type,
-                        'password':password
+                        'password':password,
+                        'otp':otp,
 
                     }
-                    mailOTP(name,otp,email)
+                    mailOTP(first_name,otp,email)
 
                     messages.info(request, "Otp Sent Your Email Id Please Check.")
                     return render(request,'home/verifyuser/verifyuser.html',context)
@@ -135,12 +136,13 @@ def verify_user(request):
     if request.method == 'POST':
         user_id=request.POST['user_id']
         email=request.POST['email']
-        name=request.POST['name']
-        city=request.POST['city']
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
+        phone=request.POST['phone']
         user_type=request.POST['user_type']
         row_password=request.POST['password']
         password=make_password(row_password)
         
-        ab = User.object.create(user_id=user_id,email=email, password=password, name=name,user_type=user_type,city=city,status=1,delete=0)
+        ab = User.object.create(user_id=user_id, first_name=first_name, last_name=last_name, email=email, phone=phone, password=password,user_type=user_type,status=1,delete=0)
         mail(user_id,row_password,email)    
         

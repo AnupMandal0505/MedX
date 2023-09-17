@@ -10,9 +10,11 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 # Create your models here.
 
 class User(AbstractBaseUser, PermissionsMixin):
-    user_id = models.CharField(max_length=225,blank=True, default='', unique=True)
+    # user_id = models.CharField(max_length=225,blank=True, default='', unique=True)
     email = models.EmailField(blank=True, default='', unique=True)
-    name = models.CharField(max_length=225, blank=True, default='')
+    first_name = models.CharField(max_length=225, blank=True, default='')
+    last_name = models.CharField(max_length=225, blank=True, default='')
+    phone=models.IntegerField(default=0,blank=True,unique=True)
     city = models.CharField(max_length=255, blank=True)
     user_type = models.CharField(max_length=255, blank=True)
     status = models.IntegerField(default=0, blank=True)
@@ -31,8 +33,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     object = UserManager()
     
 
-    USERNAME_FIELD = 'user_id'
-    EMAIL_FIELD = 'user_id'
+    USERNAME_FIELD = 'phone'
+    EMAIL_FIELD = 'phone'
     REQUIRED_FIELDS = []
 
     class Meta:
@@ -40,10 +42,10 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = 'users'
 
     def get_full_name(self):
-        return self.name
+        return self.first_name
     
     def get_short_name(self):
-        return self.name or self.email.split('@')[0]
+        return self.first_name or self.email.split('@')[0]
     
     
 

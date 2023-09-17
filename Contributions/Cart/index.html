@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Medicine</title>
     <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
@@ -15,7 +15,25 @@
   </head>
   <!-- Remove the checked for decrease rating -->
   <body>
-    <h1>Medicines available HERE!</h1>
+    <div class="container">
+      <header>
+        <h1>Medicines available HERE!</h1>
+        <div class="shopping">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="quantity">0</span>
+        </div>
+      </header>
+
+      <div class="list"></div>
+    </div> 
+    <div class="card"> 
+      <h1>Cart</h1>
+      <ul class="listCard"></ul>
+      <div class="checkOut">
+        <div class="total">0</div>
+        <div class="closeShopping">Close</div>
+      </div>
+    </div>     
     <div class="gallery">
       <div class="content">
         <img src="./med pics/1.png" alt="" />
@@ -32,7 +50,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button onclick="" class="buy-1">Add To Cart</button>
+        <button onclick="addToCard(0)" class="buy-1">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/2.png" alt="" />
@@ -49,7 +67,7 @@
           <li><i class="fa fa-star"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-2">Add To Cart</button>
+        <button onclick="addToCard(1)" class="buy-2">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/3.png" alt="" />
@@ -66,7 +84,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star checked"></i></li>
         </ul>
-        <button class="buy-3">Add To Cart</button>
+        <button onclick="addToCard(2)" class="buy-3">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/4.png" alt="" />
@@ -83,7 +101,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-4">Add To Cart</button>
+        <button onclick="addToCard(3)" class="buy-4">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/5.png" alt="" />
@@ -100,7 +118,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-5">Add To Cart</button>
+        <button onclick="addToCard(4)" class="buy-5">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/6.png" alt="" />
@@ -117,7 +135,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-6">Add To Cart</button>
+        <button onclick="addToCard(5)" class="buy-6">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/7.png" alt="" />
@@ -134,7 +152,7 @@
           <li><i class="fa fa-star"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-7">Add To Cart</button>
+        <button onclick="addToCard(6)" class="buy-7">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/8.png" alt="" />
@@ -151,7 +169,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-8">Add To Cart</button>
+        <button onclick="addToCard(7)" class="buy-8">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/9.png" alt="" />
@@ -168,7 +186,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star checked"></i></li>
         </ul>
-        <button class="buy-9">Add To Cart</button>
+        <button onclick="addToCard(8)" class="buy-9">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/10.png" alt="" />
@@ -185,7 +203,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-10">Add To Cart</button>
+        <button onclick="addToCard(9)" class="buy-10">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/11.png" alt="" />
@@ -202,7 +220,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-11">Add To Cart</button>
+        <button onclick="addToCard(10)" class="buy-11">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/12.png" alt="" />
@@ -219,7 +237,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star checked"></i></li>
         </ul>
-        <button class="buy-12">Add To Cart</button>
+        <button onclick="addToCard(11)" class="buy-12">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/13.png" alt="" />
@@ -236,7 +254,7 @@
           <li><i class="fa fa-star"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-13">Add To Cart</button>
+        <button onclick="addToCard(12)" class="buy-13">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/14.png" alt="" />
@@ -253,7 +271,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-14">Add To Cart</button>
+        <button onclick="addToCard(13)" class="buy-14">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/15.png" alt="" />
@@ -270,7 +288,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star checked"></i></li>
         </ul>
-        <button class="buy-15">Add To Cart</button>
+        <button onclick="addToCard(14)" class="buy-15">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/16.png" alt="" />
@@ -287,7 +305,7 @@
           <li><i class="fa fa-star"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-16">Add To Cart</button>
+        <button onclick="addToCard(15)" class="buy-16">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/17.png" alt="" />
@@ -304,7 +322,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-17">Add To Cart</button>
+        <button onclick="addToCard(16)" class="buy-17">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/18.png" alt="" />
@@ -321,7 +339,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star checked"></i></li>
         </ul>
-        <button class="buy-18">Add To Cart</button>
+        <button onclick="addToCard(17)" class="buy-18">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/19.png" alt="" />
@@ -338,7 +356,7 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star"></i></li>
         </ul>
-        <button class="buy-19">Add To Cart</button>
+        <button onclick="addToCard(18)" class="buy-19">Add To Cart</button>
       </div>
       <div class="content">
         <img src="./med pics/20.png" alt="" />
@@ -355,8 +373,9 @@
           <li><i class="fa fa-star checked"></i></li>
           <li><i class="fa fa-star checked"></i></li>
         </ul>
-        <button class="buy-20">Add To Cart</button>
+        <button onclick="addToCard(19)" class="buy-20">Add To Cart</button>
       </div>
     </div>
+    <script src="app.js"></script>
   </body>
 </html>
