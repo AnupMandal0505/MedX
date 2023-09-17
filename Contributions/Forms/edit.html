@@ -24,9 +24,8 @@ crossorigin="anonymous">
   margin: 0px;
 }
 
-body {
+.body_profile {
   position: relative; 
-  padding: 2%; 
   background-color: var(--green);
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -44,17 +43,17 @@ img.user {
 .inline{
 	display:inline-block;
 }
-.container {
+.profile {
   padding: 16px;
 }
 
-form {
+.form_prof {
   border: 3px solid var(--white); 
   position: absolute;
   padding-bottom: 10px; 
 }
 
-input{
+.profile input,.imgcontainer input[type=file]{
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -63,11 +62,11 @@ input{
   box-sizing: border-box;
   height: 40px;
 }
-input[type=file]{
+.imgcontainer input[type=file]{
     outline: none;
     border: none;
 }
-textarea{
+.profile textarea{
   height: 90px;
   width: 100%;
   padding: 12px 20px;
@@ -76,11 +75,11 @@ textarea{
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-p,a,b{
+.body_profile b{
   display: inline;
   font-size: 18px;
 }
-button {
+.body_profile button {
   background-color: var(--blue);
   color: white;
   padding: 8px 15px;
@@ -93,12 +92,12 @@ button {
   
 }
 
-button:hover {
+.body_profile button:hover {
   opacity: 0.8;
 }
 /*scroll btn*/
 
-#myBtn {
+.body_profile #myBtn {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
     bottom: 20px; /* Place the button at the bottom of the page */
@@ -117,48 +116,48 @@ button:hover {
     background-color: var(--blue);
 }
   
-#myBtn:hover {
+.body_profile #myBtn:hover {
     background-color: #555; /* Add a dark-grey background on hover */
 }
 
-hr {
+.body_profile hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
 }
-span{
+.body_profile span{
   color:red;
 }
 @media (min-width: 900px) {
-  form {
+  .form_prof {
   width: 50%; 
   left: 25%;
   }
 }
 /* Change styles for span and cancel button on extra small screens */
 @media  (min-width: 501px) and (max-width: 768px) {
-  form {
+  .form_prof {
   max-width: 80%; 
   left: 10%;
   }
 }
 @media (min-width: 350px) and (max-width: 500px) {
-  form {
+  .form_prof{
   max-width: 100%; 
   left: 0px;
   }
 }
 </style>
 </head>
-<body>
+<body class=" body_profile">
 
 <!-- <h3>Login Form</h3> -->
-  <form action="" method="post" style="border: 3px solid var(--white)  ">
+  <form action="" method="post" class="form_prof">
     
       <div class="imgcontainer">
         <label for="myfile"><b style="text-align: left;">Select Profile Picture  </b></label>
         <input type="file" id="myfile" name="myfile" class="user" accept="image/png, image/jpeg" single><br><br>
       </div>
-      <div class="container">
+      <div class="container profile">
         <div class="row">
           <div class="col-sm-12 col-md-5 col-lg-5 col-xl-5">
             <label for="fname"><b>First Name <span>*</span></b></label>
