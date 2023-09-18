@@ -45,6 +45,6 @@ git clone https://github.com/MedX23/MedX
 [Samartha Chatterjee ](https://github.com/samchatt143)  
 [Shreyan Naskar ](https://github.com/shreyan-naskar)  
 [Asmita Dutta ](https://github.com/Asmita-Dutta)<br/>
-[Anurag  Mandal ](https://github.com/AnupMandal0505)<br/>
+[Anup  Mandal ](https://github.com/AnupMandal0505)<br/>
 [Soumyajit Pal ](https://github.com/Soumyajit001)<br/>
 [Ritam Biswas ](https://github.com/Ritambiswas007)
