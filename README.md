@@ -18,7 +18,7 @@ The live site is not yet deployed, we are working towards it .
 
 *Ours devs are working on more new and exciting features*
 
-*Insert feature collage*
+![](https://github.com/MedX23/MedX/blob/main/Contributions/README_img/Feature_collage.png)
 
 ## Tech Stack
 
