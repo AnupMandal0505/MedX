@@ -16,9 +16,10 @@ The live site is not yet deployed, we are working towards it .
 
 - **Chat Bot** - Get a personalised chat bot for all your medical doubts with you at every step.
 
-*Ours devs are working on more new and exciting features*
 
 ![](https://github.com/MedX23/MedX/blob/main/Contributions/README_img/Feature_collage.png)
+
+*Ours devs are working on more new and exciting features*
 
 ## Tech Stack
 
