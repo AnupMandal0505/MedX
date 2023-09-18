@@ -33,8 +33,6 @@ The live site is not yet deployed, we are working towards it .
 
 ## Installation
 
-Make sure you have npm package installed on your computer
-
 Open your cli and clone the repository
 
 ```bash
