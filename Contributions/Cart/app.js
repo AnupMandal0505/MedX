@@ -135,7 +135,7 @@ function reloadCard() {
       let newDiv = document.createElement("li");
       newDiv.innerHTML = `
                 <div>${value.name}</div>
-                <div>${value.price.toLocaleString()}</div>
+                <div>&#8377; ${value.price.toLocaleString()}</div>
                 <div>
                     <button onclick="changeQuantity(${key}, ${
         value.quantity - 1
@@ -148,7 +148,7 @@ function reloadCard() {
       listCard.appendChild(newDiv);
     }
   });
-  total.innerText = totalPrice.toLocaleString();
+  total.innerText =totalPrice.toLocaleString();
   quantity.innerText = count;
 }
 function changeQuantity(key, quantity) {
