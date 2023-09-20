@@ -1,156 +1,643 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="style.css" />
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!----===== Iconscout CSS ===== -->
-    <link
-      rel="stylesheet"
-      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
-    />
-    <script
-      src="https://kit.fontawesome.com/075f637bc8.js"
-      crossorigin="anonymous"
-    ></script>
+	<!-- Boxicons -->
+<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+<script src="https://kit.fontawesome.com/90ce6d83a0.js" crossorigin="anonymous"></script>
+<!-- My CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
 
-    <title>Admin Dashboard Panel</title>
-  </head>
-  <body>
-    <nav>
-      <div class="logo-name">
-        <div class="logo-image">
-          <img src="images/logo.png" alt="" />
-        </div>
+<title>MedX</title>
+</head>
 
-        <span class="logo_name">MedX</span>
-      </div>
+<body>
 
-      <div class="menu-items">
-        <ul class="nav-links">
-          <li>
-            <a href="#">
-              <i class="uil uil-estate"></i>
-              <span class="link-name">Dashboard</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="uil uil-files-landscapes"></i>
-              <span class="link-name">Content</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="uil uil-chart"></i>
-              <span class="link-name">Analytics</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="uil uil-thumbs-up"></i>
-              <span class="link-name">Like</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="uil uil-comments"></i>
-              <span class="link-name">Comment</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="uil uil-share"></i>
-              <span class="link-name">Share</span>
-            </a>
-          </li>
-        </ul>
 
-        <ul class="logout-mode">
-          <li>
-            <a href="#">
-              <i class="uil uil-signout"></i>
-              <span class="link-name">Logout</span>
-            </a>
-          </li>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<ul class="side-menu top">
+			<img src="img/sm.ico">
+			<li class="active dashboard_active">
+				<a href="#">
+					<i class="fa-brands fa-windows"></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa-solid fa-user"></i>
+					<span class="text">Profile</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa-solid fa-calendar-check"></i>
+					<span class="text">Appointment</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa-solid fa-store"></i>
+					<span class="text">Med Store</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa-solid fa-chart-line"></i>
+					<span class="text">Analytics</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-history" aria-hidden="true"></i>
+					<span class="text">History</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa-solid fa-person-chalkboard"></i>
+					<span class="text">Team</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa-solid fa-receipt"></i>
+					<span class="text">Payment History</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu bottomn position-absolute end-0 bottom-0">
+			<li>
+				<a href="#">
+					<i class="fa fa-cog" aria-hidden="true"></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" class="logout">
+					<i class="fa-solid fa-right-from-bracket"></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
 
-          <li class="mode">
-            <a href="#">
-              <i class="uil uil-moon"></i>
-              <span class="link-name">Dark Mode</span>
-            </a>
 
-            <div class="mode-toggle">
-              <span class="switch"></span>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <section class="dashboard">
-      <div class="top">
-        <i class="uil uil-bars sidebar-toggle"></i>
-        <img src="images/profile.jpg" alt="" />
-      </div>
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<!-- <a href="#" class="nav-link">Categories</a> -->
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+				</div>
+			</form>
+			<!-- <input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label> -->
+			<a href="#" class="notification">
+				<i class="fa-solid fa-bell"></i>
+				<span class="num">2</span>
+			</a>
+			<div class="profile">
+				<img src="img/md.png">
+			</div>
+			<div class="dropdown">
+				<a href="#" class="profile dropdown-toggle" role="button" id="dropdownMenuLink"
+					data-bs-toggle="dropdown" aria-expanded="false">
+					<!-- <img src="img/md.png"> -->
+				</a>
+				<ul class="dropdown-menu mt-3 p-4" aria-labelledby="dropdownMenuLink">
+					<li><a class="dropdown-item" href="#">My Profile</a></li>
+					<li><a class="dropdown-item" href="#">Settings</a></li>
+					<li><a class="dropdown-item" href="#">Log out</a></li>
+				</ul>
+			</div>
+		</nav>
+		<!-- NAVBAR -->
 
-      <div class="dash-content">
-        <div class="overview">
-          <div class="title">
-            <i class="uil uil-tachometer-fast-alt"></i>
-            <span class="text">Dashboard</span>
-          </div>
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Home</a>
+						</li>
+					</ul>
+				</div>
+				<!-- <a href="#" class="btn-download">
+					<i class='bx bxs-cloud-download'></i>
+					<span class="text">Download PDF</span>
+				</a> -->
+			</div>
 
-          <div class="boxes">
-            <div class="box box1">
-              <i class="fa-solid fa-pills"></i>
-              <span class="text">Medicines</span>
-            </div>
-            <div class="box box2">
-              <i class="fa-solid fa-calendar-check"></i>
-              <span class="text">Appointment</span>
-            </div>
-            <div class="box box3">
-              <i class="fa-solid fa-prescription-bottle-medical"></i>
-              <span class="text">Prescription</span>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="box box3">
-            <span class="text"
-              ><h1><u> INSTRUCTIONS</u></h1>
-            </span>
-            <br />
-            <span class="text">
-              1. Please click 5 pictures of your affected area for upload.
-            </span>
-            <span class="text">
-              2. The manifestation should be clearly visible at the central area
-              of the pictures.
-            </span>
-            <span class="text">
-              3. Click pictures from different angles at a well lit environment.
-            </span>
-            <span class="text">
-              4. Try to trim or shave the surrounding area if possible for clear
-              visibility.
-            </span>
-            <button class="choose">Diagnose</button>
-          </div>
-        </div>
-        <span class="text">
-          **Caution : The diagnosis predicted may vary from the actual skin
-          condition. Please refer to verified specialists at our platform for a
-          more accurate diagnosis.
-        </span>
-      </div>
-    </section>
+			<ul class="box-info">
+				<li>
+					<i class='bx bxs-calendar-check'></i>
+					<span class="text">
+						<h3>2</h3>
+						<p>Appointments</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-clinic'></i>
+					<span class="text">
+						<h3>10</h3>
+						<p>Doctors</p>
+					</span>
+				</li>
+				<li>
+					<i class='bx bxs-capsule'></i>
+					<span class="text">
+						<h3>20</h3>
+						<p>Medicines</p>
+					</span>
+				</li>
+			</ul>
 
-    <script src="script.js"></script>
-  </body>
+
+
+			<!-- <body-section-start> -->
+				<div class="container mt-3">
+					<h2>Upload Image Or Diagnosis</h2>
+					<p class="tag_line1">* Image should not be more than 250kb</p>
+			
+			
+					<div class="card p-4">
+						<form action="#">
+							<div class="row">
+			
+								
+							
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group">
+										<span class="input-group-text">Upload Image 1</span>
+										<input type="file" class="form-control" id="image_input1"
+											accept="image/jpg, iamge/jpeg, image/png" placeholder="Username" name="usrname">
+									</div>
+									<p class="tag_line">* Image should not be more than 250kb</p>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div id="display_image1"></div>
+								</div>
+			
+			
+			
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group">
+										<span class="input-group-text">Upload Image 2</span>
+										<input type="file" class="form-control" id="image_input2"
+											accept="image/jpg, iamge/jpeg, image/png" placeholder="Username" name="usrname">
+									</div>
+									<p class="tag_line">* Image should not be more than 250kb</p>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div id="display_image2"></div>
+								</div>
+			
+			
+			
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group">
+										<span class="input-group-text">Upload Image 3</span>
+										<input type="file" class="form-control" id="image_input3"
+											accept="image/jpg, iamge/jpeg, image/png" placeholder="Username" name="usrname">
+									</div>
+									<p class="tag_line">* Image should not be more than 250kb</p>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div id="display_image3"></div>
+								</div>
+			
+			
+			
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group">
+										<span class="input-group-text">Upload Image 4</span>
+										<input type="file" class="form-control" id="image_input4"
+											accept="image/jpg, iamge/jpeg, image/png" placeholder="Username" name="usrname">
+									</div>
+									<p class="tag_line">* Image should not be more than 250kb</p>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div id="display_image4"></div>
+								</div>
+			
+			
+			
+								<div class="col-md-6 col-sm-12">
+									<div class="input-group">
+										<span class="input-group-text">Upload Image 5</span>
+										<input type="file" class="form-control" id="image_input5"
+											accept="image/jpg, iamge/jpeg, image/png" placeholder="Username" name="usrname">
+									</div>
+									<p class="tag_line">* Image should not be more than 250kb</p>
+								</div>
+								<div class="col-md-6 col-sm-12">
+									<div id="display_image5"></div>
+								</div>
+			
+			
+			
+								<button class="nextBtn">
+									<span class="btnText">Submit</span>
+									<!-- <i class="fa-solid fa-forward"></i> -->
+								</button>
+							</div>
+			
+						</form>
+					</div>
+			
+				</div>
+
+		</main>
+		<!-- MAIN -->
+
+
+
+
+
+
+
+	</section>
+	<!-- CONTENT -->
+
+
+
+
+
+
+	<!-- <script src="script.js"></script> -->
+	<script>
+		const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+
+		allSideMenu.forEach(item => {
+			const li = item.parentElement;
+
+			item.addEventListener('click', function () {
+				allSideMenu.forEach(i => {
+					i.parentElement.classList.remove('active');
+				})
+				li.classList.add('active');
+			})
+		});
+
+
+		// TOGGLE SIDEBAR
+		const menuBar = document.querySelector('#content nav .bx.bx-menu');
+		const sidebar = document.getElementById('sidebar');
+
+		menuBar.addEventListener('click', function () {
+			sidebar.classList.toggle('hide');
+		})
+
+
+		const searchButton = document.querySelector('#content nav form .form-input button');
+		const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
+		const searchForm = document.querySelector('#content nav form');
+
+		searchButton.addEventListener('click', function (e) {
+			if (window.innerWidth < 576) {
+				e.preventDefault();
+				searchForm.classList.toggle('show');
+				if (searchForm.classList.contains('show')) {
+					searchButtonIcon.classList.replace('bx-search', 'bx-x');
+				} else {
+					searchButtonIcon.classList.replace('bx-x', 'bx-search');
+				}
+			}
+		})
+
+
+		if (window.innerWidth < 768) {
+			sidebar.classList.add('hide');
+		} else if (window.innerWidth > 576) {
+			searchButtonIcon.classList.replace('bx-x', 'bx-search');
+			searchForm.classList.remove('show');
+		}
+
+
+		window.addEventListener('resize', function () {
+			if (this.innerWidth > 576) {
+				searchButtonIcon.classList.replace('bx-x', 'bx-search');
+				searchForm.classList.remove('show');
+			}
+		})
+
+
+
+		const switchMode = document.getElementById('switch-mode');
+
+		switchMode.addEventListener('change', function () {
+			if (this.checked) {
+				document.body.classList.add('dark');
+			} else {
+				document.body.classList.remove('dark');
+			}
+		})
+
+
+		const form = document.querySelector("form"),
+        nextBtn = form.querySelector(".nextBtn");
+        allInput = form.querySelectorAll(".row .input-group");
+
+
+// nextBtn.addEventListener("click", ()=> {
+//     allInput.forEach(input => {
+//         if(input.value != ""){
+//             form.classList.add('secActive');
+//         }else{
+//             form.classList.remove('secActive');
+//         }
+//     })
+// })
+
+
+const image_input1 = document.querySelector("#image_input1")
+var uploaded_image = "";
+
+image_input1.addEventListener("change", function(){
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        uploaded_image = reader.result;
+        document.querySelector("#display_image1").style.backgroundImage = `url(${uploaded_image})`
+    })
+    reader.readAsDataURL(this.files[0]);
+})
+
+
+
+const image_input2 = document.querySelector("#image_input2")
+var uploaded_image = "";
+
+image_input2.addEventListener("change", function(){
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        uploaded_image = reader.result;
+        document.querySelector("#display_image2").style.backgroundImage = `url(${uploaded_image})`
+    })
+    reader.readAsDataURL(this.files[0]);
+})
+
+const image_input3 = document.querySelector("#image_input3")
+var uploaded_image = "";
+
+image_input3.addEventListener("change", function(){
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        uploaded_image = reader.result;
+        document.querySelector("#display_image3").style.backgroundImage = `url(${uploaded_image})`
+    })
+    reader.readAsDataURL(this.files[0]);
+})
+
+
+
+const image_input4 = document.querySelector("#image_input4")
+var uploaded_image = "";
+
+image_input4.addEventListener("change", function(){
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        uploaded_image = reader.result;
+        document.querySelector("#display_image4").style.backgroundImage = `url(${uploaded_image})`
+    })
+    reader.readAsDataURL(this.files[0]);
+})
+
+
+
+const image_input5 = document.querySelector("#image_input5")
+var uploaded_image = "";
+
+image_input5.addEventListener("change", function(){
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+        uploaded_image = reader.result;
+        document.querySelector("#display_image5").style.backgroundImage = `url(${uploaded_image})`
+    })
+    reader.readAsDataURL(this.files[0]);
+})
+
+
+	</script>
+
+
+
+<style>
+
+.container{
+    position: relative;
+    /* max-width: 900px; */
+    width: 100%;
+    border-radius: 6px;
+    background-color: white;
+    align-items: center;
+}
+
+.card{
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    width: 96%;
+}
+
+form {
+    background-image: url('img/preliminary_diagnosis.jpg');
+}
+
+.input-group{
+    margin: 60px 0 0 40px;
+    border-radius: 90px;
+    width: 86%;
+}
+
+.form-control{
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    min-width: 0;
+}
+
+.tag_line1{
+    margin: -15px 0 0 5px;
+    color: red;
+    font-size: 16px;
+}
+
+.tag_line1:hover{
+    cursor:pointer;
+    color: rgb(91, 152, 91);
+}
+
+.tag_line{
+    margin-left: 44px;
+    color: red;
+    font-size: 14px;
+}
+
+.container h2{
+    position: relative;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.container h2::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 20%;
+    border-radius: 10px;
+    background-color: #4070f4;
+}
+
+.container form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: white;
+    overflow: hidden
+}
+
+.container form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 150px;
+    width: 100%;
+    margin: 30px 0 0 40%;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #213e8d;
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.nextBtn .btnText{
+    font-size: 20px;
+}
+
+form button:hover{
+    background-color: #265df2;
+}
+
+
+#display_image1{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+    object-fit: none;
+
+
+}
+
+#display_image2{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image3{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image4{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image5{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+
+@media(max-width: 769px) {
+    #display_image1{
+        display: none;
+    }
+    #display_image2{
+        display: none;
+    }
+    #display_image3{
+        display: none;
+    }
+    #display_image4{
+        display: none;
+    }
+    #display_image5{
+        display: none;
+    }
+    form{
+        padding-right: 10px;
+    }
+    .tag_line1{
+        font-size: 14px;
+    }
+
+    .tag_line{
+        font-size: 13px;
+    }
+}
+</style>
+
+
+
+
+
+
+
+
+
+</body>
 </html>
