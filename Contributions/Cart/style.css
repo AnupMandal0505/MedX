@@ -299,7 +299,7 @@ header .shopping span {
 }
 
 .active .card {
-    left: calc(100% - 400px);
+    left: calc(100% - 420px);
 }
 
 .active .container {
