@@ -371,7 +371,7 @@ html {
 	padding: 36px 24px;
 	font-family: var(--poppins);
 	max-height: calc(100vh - 56px);
-	/* min-height: 683px; */
+	min-height: 683px;
 	overflow-y: auto;
 }
 #content main .head-title {
