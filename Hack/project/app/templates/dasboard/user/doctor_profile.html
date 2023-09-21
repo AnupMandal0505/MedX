@@ -1,0 +1,150 @@
+{% extends "dasboard/base.html" %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+
+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+{% endblock head %}
+
+
+{% block style %}
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Merriweather:ital,wght@0,700;1,400&family=Poppins:wght@300;500;700;800;900&family=Roboto:wght@300;400;500;700&display=swap");
+
+  :root {
+    --green: #c9efb7;
+  }
+  
+  .doctor_profile h4,.doctor_profile h5{
+  color:black;
+  }
+
+  .doctor_profile .card{
+    padding: 5px;
+  }
+  .doctor_profile .card:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+</style>
+{% endblock style %}
+{% block body %}
+
+  <div class="container doctor_profile">
+    <h1 style="text-align: center;">Our Specialists :</h1><br><br>
+    <div class="row">
+
+      {% if doctor_data %}
+      {% for i in doctor_data %}
+      <div class="col-md-3 col-sm-12 mt-5">
+        <div class="card" style="width:300px; height:500px;">
+          {% if i.profile %}<img class="card-img-top me-lg-2" src="{{i.profile.url}}" alt="profile image" style="width:100%;height: 50%;"> {% else %} <img class="card-img-top me-lg-2" src="{% static 'web_image/user.png' %}" alt="profile image" style="width:100%;height: 50%;">{% endif %}
+
+          {% comment %} <img class="card-img-top" src=" https://cdn.pixabay.com/photo/2016/08/31/11/54/icon-1633249_640.png" alt="Card image" style="width:100%;height: 50%;"> {% endcomment %}
+          <div class="card-body">
+              <h4>{{i.first_name}}</h4>
+              <h5>{{i.last_name}} </h5>
+              <p>
+                <b>Services</b>: Dermaroller, Scar Treatment,Mole Removal, Photofacial
+              </p>
+
+            <a href="appointment/{{i.phone_slug}}" class="btn btn-primary">Appointment</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
+      
+    </div>    
+
+  </div>
+    {% comment %} <div class="row">
+      <div class="col-sm-7 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2017/05/23/17/12/doctor-2337835_640.jpg" alt="" />
+          </div>
+          <div class="content">
+            <h4 class="heading">Dr Chanchal Bhar</h4>
+            <h5>Dermatology </h5>
+            <p>
+              <b>Services</b>: Psoriasis, Hives, Melanoma, Skin cancer, Autoimmune disorders
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2017/05/23/17/12/doctor-2337835_640.jpg" alt="" />
+          </div>
+          <div class="content">
+            <h4 class="heading">Dr Chanchal Bhar</h4>
+            <h5>Dermatology </h5>
+            <p>
+              <b>Services</b>: Psoriasis, Hives, Melanoma, Skin cancer, Autoimmune disorders
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2017/05/23/17/12/doctor-2337835_640.jpg" alt="" />
+          </div>
+          <div class="content">
+            <h4 class="heading">Dr Chanchal Bhar</h4>
+            <h5>Dermatology </h5>
+            <p>
+              <b>Services</b>: Psoriasis, Hives, Melanoma, Skin cancer, Autoimmune disorders
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-7 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2017/05/23/17/12/doctor-2337835_640.jpg" alt="" />
+          </div>
+          <div class="content">
+            <h4 class="heading">Dr Nidhi Jindal</h4>
+            <h5>Dermatology </h5>
+            <p>
+              <b>Services</b>: Dermaroller, Scar Treatment,Mole Removal, Photofacial
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2017/05/23/17/12/doctor-2337835_640.jpg" alt="" />
+          </div>
+          <div class="content">
+            <h4 class="heading">Dr. Joyeeta Roy</h4>
+            <h5>Dermatology </h5>
+            <p>
+              <b>Services</b>: Laser Surgery, Photomedicine, Skin Oncology,
+              Laser Resurfacing
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-7 col-md-6 col-lg-3 col-xl-3">
+        <div class="card">
+          <div class="image">
+            <img src="https://cdn.pixabay.com/photo/2017/05/23/17/12/doctor-2337835_640.jpg" alt="" />
+          </div>
+          <div class="content">
+            <h4 class="heading">Dr Gourab Roy</h4>
+            <h5>Dermatology </h5>
+            <p>
+              <b>Services</b>: Skin Oncology, Dermaroller, Photomedicine, Laser Surgery
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> {% endcomment %}
+{% endblock body %}

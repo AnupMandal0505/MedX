@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="icon" type="image/x-icon" href="{% static "home/image/favicon.png" %}">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    {% comment %} <link rel="stylesheet" href="{% static 'home/css/base.css' %}"> {% endcomment %}
+</head>
+
+<style type="text/css">
+  *{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:19px;
+  }
+
+  :root {
+  --green:#31b085;
+  --black: #000;
+  --blue: #0074D9;
+  --white: #fff;
+  --bg: #000;
+  --grey: rgb(135, 126, 126);
+}
+
+  .navbar{
+    background-color: black;
+  }
+
+  .navbar a{
+    color: white;
+    text-decoration: none;
+  }
+
+  .nav-item a{
+    color: white;
+    font-size: 1rem;
+    border-bottom: 1px solid black;
+
+  }
+
+  .nav-item a:hover{
+    color: white;
+    border-bottom: 1px solid white;
+    transition: 0.3s smooth;
+  }
+
+  .navbar-nav .home{
+    color: white;
+    border-bottom: 1px solid white;
+    margin:0px;
+    padding:0px;
+    margin-right:5px;
+  }
+ 
+
+  .navbar h4{
+    display: inline-block;
+    color: white;
+    padding:0px;
+    margin: 0px;
+    margin-left: 6px;
+
+}
+
+  
+.footer{
+  background-color: var(--bg);
+  color: var(--white);
+  border-top: 2px solid var(--white);
+}
+
+.footer .footer-wrapper{
+  margin-top:15px;
+  padding-bottom: 15px;
+  
+}
+.footer .footer-wrapper .section1 a span{
+  font-size: 1.7rem;
+  color: var(--blue);
+}
+
+
+.footer .footer-wrapper hr{
+  width: 50%;
+  
+}
+.footer-bottom{
+  background-color: var(--bg);
+  color: var(--white);
+  border-top: 1px solid var(--white);
+  padding-bottom: 15px;
+  
+}
+
+.footer-bottom span{
+  color: var(--blue);
+}
+
+.footer-bottom .copyright .section2 .p-2:hover{
+  color: var(--blue);
+}
+.d-flex a,.d-inline-flex a{
+color: #fff;
+
+}
+.d-flex a:hover,.d-inline-flex a:hover{
+color: var(--blue);
+}
+
+
+</style>
+{% block style %}{% endblock style %}
+
+<body>
+
+  <nav class="navbar navbar-expand-sm">
+    <div class="container-fluid">
+        <img src="{% static 'home/image/apple-touch-icon.png' %}" alt="MedXLogo" style="width:50px;border-radius: 50%;" class="rounded-pill">
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+        <ul class="navbar-nav" >
+          <li class="nav-item home">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Products</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../doc_prof/doc_prof.html">Our Doctors</a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link" href="signup">Sign up </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="signin">Sign in</a>
+          </li>
+            </ul>
+          </li> 
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+    
+    
+      {% block body %}{% endblock body %}
+   
+
+      <div class="footer">
+        <div class="container">
+            <div class="row footer-wrapper">
+                <div class="col-md-6 section1">
+                    <div class="d-flex flex-column">
+                        <div class="p-1">
+                            <a class="navbar-brand" href="#">
+                                <span>MedX</span>
+                            </a>
+                            <p>MedX is your one-stop destination for all your skin concerns. Our cutting-edge platform harnesses the power of
+                               advanced technology to provide you a seamless and holistic approach to dermatological care.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 section2">
+                  <h4>Service By</h4>
+                    <hr>
+                    <div class="d-flex flex-column">
+                      <a class="nav-link"
+                        href="https://www.google.com/search?q=hyderabad&oq=hyderabad&aqs=chrome.0.0i355i433i512j46i433i512l2j0i512j0i131i433i512j46i131i433i512j0i131i433i650j0i433i512j0i131i433i512j46i131i175i199i433i512.1404j0j7&sourceid=chrome&ie=UTF-8"
+                      >
+                        Hyderabad
+                      </a>
+                      <a class="nav-link"
+                        href="https://www.google.com/search?gs_ssp=eJzj4tDP1TewTDY0N2D04kxKzEtPzMkvSgUAPNgGQQ&q=bangalore&oq=banga&aqs=chrome.1.69i57j46i433i512l2j0i131i433i512j0i512j0i433i512l4.3554j0j7&sourceid=chrome&ie=UTF-8"
+                      >
+                        Bangalore
+                      </a>
+                      <a class="nav-link"
+                        href="https://www.google.com/search?q=kolkata&oq=kolkata&aqs=chrome.0.0i271j46i131i433i512j46i131i199i433i465i512j0i131i433i512l2j0i512j69i60l2.2883j0j4&sourceid=chrome&ie=UTF-8"
+                      >
+                        Kolkata
+                      </a>
+                      <a class="nav-link"
+                        href="https://www.google.com/search?q=chennai&oq=chennai&aqs=chrome.0.0i271j46i433i512j46i131i433i512j0i512j0i131i433i512j0i433i650j0i512j0i433i512j46i512j46i131i175i199i433i512.1303j0j7&sourceid=chrome&ie=UTF-8"
+                      >
+                        Chennai
+                      </a>
+                      <a class="nav-link"
+                        href="https://www.google.com/search?q=mumbai&oq=mumbai&aqs=chrome.0.0i271j46i131i433i512j0i131i433i512j46i131i433i650j0i512j0i131i433i650j46i512j0i433i512j0i131i433i650j46i433i512.5379j0j7&sourceid=chrome&ie=UTF-8"
+                      >
+                        Mumbai
+                      </a>
+                      <a class="nav-link"
+                        href="https://www.google.com/search?q=delhi&oq=delhi&aqs=chrome.0.0i355i433i512j46i433i512j0i131i433i512l2j46i433i512j0i131i433i512j0i512l2j0i131i433i650j0i131i433i512.1009j0j7&sourceid=chrome&ie=UTF-8"
+                      >
+                        Delhi
+                      </a>
+                      
+                    </div>
+                </div>
+                <div class="col-md-3 section2">
+                  <h5>About US</h5>
+                    <hr>
+                    <div class="d-flex flex-column">
+                      <a class="nav-link" href="https://www.linkedin.com/in/samartha-chatterjee-b01721240/" > Samartha Chatterjee </a>
+                      <a class="nav-link" href="https://www.linkedin.com/in/shreyan-naskar-38b583234/" > Shreyan Naskar </a>
+                      <a class="nav-link" href="https://www.linkedin.com/in/asmita-dutta-1b86aa221/" > Asmita Dutta </a>
+                      <a class="nav-link" href="https://www.linkedin.com/in/soumyajit-pal-110625224/" > Soumyajit Pal </a>
+                      <a class="nav-link" href="https://www.linkedin.com/in/ritam-biswas-2b87b7232/" > Ritam Biswas </a>
+                      <a class="nav-link" href="https://www.linkedin.com/in/anup-mandal-334278202/"> Anup Mandal </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row copyright">
+                <div class="col-md-6 col-sm-6 section1">
+                    <div class="d-inline-flex">
+                        <div class="p-2">Copyrights © 2023 All Rights Reserved</div>
+                        <div class="p-2">Powered by <span>MedX</span></div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 section2">
+                    <div class="d-inline-flex">
+                      <a href= "contact_us" class="p-2 nav-link">Contact Us</a>
+                        <a href= "../TandC.html" class="p-2 nav-link">Return Policy</a>
+                        <a href= "../TandC.html" class="p-2 nav-link">Privacy Policy</a>
+                        <a href= "../TandC.html" class="p-2 nav-link">Terms & Condition</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
