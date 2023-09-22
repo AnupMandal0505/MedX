@@ -21,16 +21,7 @@
         color: black;
     }
 
-    .container {
-        display: flex;
-        flex-direction: column;
-        
-        align-items: center;
-        justify-content: center;
-        margin-top: 20px;
-        margin-bottom: 30px;
-        padding: 24px;
-    }
+    
 
     .heading {
         display: flex;
@@ -50,21 +41,38 @@
         box-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, 0.1);
         width: 100%;
     }
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding-left: 50%;
+        width: auto;
+        margin: auto;
+        
+        align-items: center;
+        justify-content: center;
+        
+        
+        padding: 24px;
+    }
+    
 
   
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .form-group {
             width: 100%;
         }
+      
+       
        
     }
+ 
 
 </style>
 <body>
 
 
 
-    <h1 class="heading">Product Details!</h1>
+    <h1 class="heading">Product Details</h1>
     <hr>
 
     <form class="w-50 mx-auto mt-5 mb-5">
@@ -89,7 +97,7 @@
             <input type="text" class="form-control" id="amnt" disabled/>
             <button type="button" class="btn btn-warning m-2 " onclick="addData()">Add</button>
         </div>
-        <h1 class="heading">Personal Details!</h1>
+        <h1 class="heading">Personal Details</h1>
         <hr>
         <div class="container">
             <div class=" mt-5">
@@ -170,7 +178,8 @@
         </div>
     </div> -->
     <hr>
-    <table bgcolor="lightblue" width="100%">
+<div class="container2">
+    <table bgcolor="lightblue" width="100%" pa>
         <tr>
             <td>
                 <H1>
@@ -193,7 +202,12 @@
             </td>
         </tr>
     </table>
+</div>
     <br><br>
+
+   
+
+  
     <table>
         <tr>
             <td width="5%"></td>
