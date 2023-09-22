@@ -39,8 +39,9 @@ def VerifyPasswordOtp(request):
         user.status=1
         user.save()
         mail(user.first_name,row_password,user.email)
-
-    return render(request,'home/index.html')
+        return render('signin')
+    else:
+        return render(request,'dasboard/verify_otp/verify_otp.html')
 
 
 # @csrf_exempt

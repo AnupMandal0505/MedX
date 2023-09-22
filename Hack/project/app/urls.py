@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import ai_prediction,contact_us,about_us, appointment_letter,doctor_profile, home,register,verify_otp,login,dasboard,appointment, user_history,show_appointment,prescription,patient,payment,crud,check_diagnosis
+from .views import ai_prediction,contact_us,about_us, term_and_condition,appointment_letter,doctor_profile, home,register,verify_otp,login,dasboard,appointment,send_meet_link, user_history,show_appointment,prescription,patient,payment,crud,check_diagnosis
 
 urlpatterns = [
     path("",home.home,name = "home"),
@@ -10,6 +10,9 @@ urlpatterns = [
     path("verifyuser",register.verify_user,name = "verifyuser"),
     path("contact_us",contact_us.contact_us,name = "contact_us"),
     path("about_us",about_us.about_us,name = "about_us"),
+    path("term_and_condition",term_and_condition.term_and_condition,name = "term_and_condition"),
+
+
 
     path("dasboard",dasboard.dasboard,name = "dasboard"),
 
@@ -21,6 +24,7 @@ urlpatterns = [
     path("payment_history",user_history.payment_history,name = "history"),
     path("check_diagnosis",check_diagnosis.check_diagnosis,name = "check_diagnosis"),
     path("doctor_profile",doctor_profile.doctor_profile,name = "doctor_profile"),
+    path("doc_prof",doctor_profile.doc_prof,name = "doc_prof"),
 
 
 
@@ -30,7 +34,8 @@ urlpatterns = [
     path("show_appointment/<slug:slug>",show_appointment.show_appointment,name = "show_appointment"),
     path("doctor_prescription/<slug:slug>",patient.doctor_prescription,name = "doctor_prescription"),
     path("patient-form/<slug:slug>",patient.patient_form,name = "patient-form"),
-    path("patient",patient.patient,name = "patient"),
+    # path("patient/<str:appointment_id>",patient.patient,name = "patient"),
+    path("send_meet_link/<slug:slug>",send_meet_link.send_meet_link,name = "send_meet_link"),
 
 
 

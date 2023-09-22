@@ -147,7 +147,7 @@
         </ul>
       </div>
     </div>
-    <form action="{% url "patient" %}" method="post">
+    <form action="/patient-form/{{data.appointment_id}}" method="post">
       {% csrf_token %}
       <div class="row">
         <hr>
@@ -183,6 +183,8 @@
 
       <div class="col-sm-12 d-flex justify-content-center">
       
+        {% if data.predicted_file %}<a href="{{data.predicted_file.url}}" target="blank" class="btn btn-success">Report</a>{% endif %}
+
         <button class="btn btn-info"  type="submit">Submit</button>
     
       </div>

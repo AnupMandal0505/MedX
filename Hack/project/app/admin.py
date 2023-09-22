@@ -9,7 +9,7 @@ from .models import User,Appointment,Patient,Payment,Department
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['phone','email', 'user_type', 'city', 'date_joined', 'status']
+    list_display = ['phone','email','first_name', 'last_name', 'user_type', 'city', 'date_joined', 'status']
 
 @admin.register(Appointment)
 class UserAdmin(admin.ModelAdmin):

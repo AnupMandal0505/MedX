@@ -1,7 +1,6 @@
 from django.shortcuts import render,redirect
-from app.models import User,Appointment,Patient
+from app.models import User
 import random
-from django.contrib.auth.hashers import make_password
 
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail,EmailMultiAlternatives
@@ -71,21 +70,22 @@ def update_password(request):
         try:
             user=User.object.get(phone=phone) 
             otp=random.randint(1000,9999)
-            mail(user.name,user.email,otp)
+            mail(user.first_name,user.email,otp)
             context={
                 'otp':otp,
                 'phone':phone,
                 'password':password
 
             }
+
             messages.info(request, "Otp Sent Your Email Id Please Check.")
             return render(request,'dasboard/verify_otp/verify_otp.html',context)
-        
+
         except:
             messages.info(request, "Incorrect Register Phone Number .")
             redirect('dasboard')
-    
-    return render(request,'dasboard/update_profile/update_password.html')
+    else:
+        return render(request,'dasboard/update_profile/update_password.html')
 
 
 
@@ -111,10 +111,12 @@ def edit_profile(request):
     if request.method == 'POST':
         email=request.POST['email']
         city=request.POST['city']
-        name=request.POST['name']
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
 
         us=request.user
-        us.name=name
+        us.first_name=first_name
+        us.last_name=last_name
         us.email=email
         us.city = city
         try:

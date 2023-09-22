@@ -49,12 +49,13 @@
     :root {
         --primary: #EB1616;
         --secondary: white;
-        --light: #61cd88;
-        --dark: #61cd88;
+        --light:#258464 ;
+        --dark: #B6E2A1;
         --sidebar-text:black;
     }
     
     .back-to-top {
+        
         position: fixed;
         display: none;
         right: 45px;
@@ -414,7 +415,7 @@
 
     <div class="form-popup" {% if 1 == request.user.status  %} style="display:none;"{% endif %}>
         <div class="card">
-            <form action="{% url 'update_password' %}" method="post">
+            <form action="/update_password" method="post">
                 {% csrf_token %}
                 <h1>Update Password</h1>
                 <div class="mb-3 mt-3">
@@ -491,8 +492,8 @@
                     {% else %}
                         <a href="/doctor_profile" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Appointment</a>
                         <a href="/appointment_history" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>History</a>
-                        <a href="/payment_history" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Payment History</a>
-                        <a href="/check_diagnosis" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Download</a>
+                        {% comment %} <a href="/payment_history" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Payment History</a> {% endcomment %}
+                        {% comment %} <a href="/check_diagnosis" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Download</a> {% endcomment %}
 
                     {% endif %}
                     <a href="/signout" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Logout</a>
@@ -604,6 +605,20 @@
             </nav>
             <!-- Navbar End -->
 
+
+            {% if messages %}
+   
+            {% for message in messages %}
+                
+              <div id="alert" class="alert {% if message.tags == "success" %} alert-success {% elif message.tags == "warning" %} alert-danger{% else %} alert-info{% endif %} alert-dismissible fade show" id="alert">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{ message }}</strong>  </div>
+        
+            {% endfor %}
+          
+          {% endif %}
+
+          
             {% block body %}{% endblock body %}
 
             <!-- Footer Start -->
@@ -634,7 +649,13 @@
        
     </div>
 
-
+    <script type="text/javascript">
+        setTimeout(function () {
+    
+            // Closing the alert
+            $('#alert').alert('close');
+        }, 3000);
+    </script>
     
 
     {% block js %}{% endblock js %}

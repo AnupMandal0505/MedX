@@ -21,7 +21,7 @@
     <div class="card">
       <div class="card-body">
         {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 150px; height: 150px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 150px; height: 150px;">{% endif %}
-        <div class="row">
+        {% comment %} <div class="row">
             <div class="col-md-4">
                 <h4>User ID:</h4><br>
                 <p>{{request.user}}</p>
@@ -38,9 +38,30 @@
                 <h4>Email:</h4><br>
                 <p>{{request.user.email}}</p>
             </div>
-        </div>
+        </div> {% endcomment %}
 
-        <button onclick="myFunction()" class=" btn btn-info cancelbtn">Edit</button>
+        <form action=" " id="edit_profile" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row mt-3">
+                <div class="col">
+                    <input type="text" class="form-control" value="{{request.user.first_name}}" readonly name="name">
+                  </div>
+              
+              <div class="col">
+                <input type="text" class="form-control" value="{{request.user.last_name}}" readonly name="name">
+              </div>
+            </div>
+            <div class="row mt-5">
+              <div class="col">
+                <input type="text" class="form-control" value="{{request.user.email}}" readonly name="email">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" value="{{request.user.city}}" readonly  name="city">
+              </div>
+            </div>
+  
+          </form>
+        <button onclick="myFunction()" class=" btn btn-info cancelbtn mt-3">Edit</button>
 
       </div>
     </div>

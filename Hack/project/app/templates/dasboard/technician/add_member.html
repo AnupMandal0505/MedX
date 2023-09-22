@@ -339,7 +339,7 @@ form .buttons button, .backBtn{
                     </div>
                     <div class="input_field">
                         <label>Mobile number</label>
-                        <input type="number" placeholder="Enter contact no." name="phone" required>
+                        <input type="text" placeholder="Enter contact no." name="phone" required>
                     </div>
                     
                     <div class="input_field">
@@ -480,7 +480,7 @@ form .buttons button, .backBtn{
         nextBtn = form.querySelector(".nextBtn");
         allInput = form.querySelectorAll(".first input");
 
-nextBtn.addEventListener("click", ()=> {
+{% comment %} nextBtn.addEventListener("click", ()=> {
     allInput.forEach(input => {
         if(input.value != ""){
             form.classList.add('secActive');
@@ -489,7 +489,7 @@ nextBtn.addEventListener("click", ()=> {
         
         }
     })
-})
+}) {% endcomment %}
 
 // for upload image
 const image_input = document.querySelector("#image_input")

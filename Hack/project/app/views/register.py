@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.views import View
 from app.models import User,Department
 import random
+from django.http import JsonResponse, HttpResponse
 
 from datetime import datetime
 

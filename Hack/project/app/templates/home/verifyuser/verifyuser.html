@@ -17,7 +17,7 @@
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
             <!-- Use ajax data transfer -->
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+          {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> {% endcomment %}
 
 
 </head>
@@ -128,6 +128,11 @@ button:hover {
 </body>
 </html>
 
+
+            <!-- Use ajax data transfer -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
 <script>
 
 const inputs = document.getElementById("inputs");
@@ -191,19 +196,18 @@ function otp_checker() {
     $.ajax({
 
       type: "POST",
-
       url: '{% url "verifyuser" %}',
-
-      data: { 'user_id': "{{user_id}}",'first_name': "{{first_name}}",'last_name': "{{last_name}}",'email': "{{email}}",'phone': "{{phone}}", 'user_type': "{{user_type}}", 'password': "{{password}}" },
-
+      data: { 'user_id': "{{user_id}}",'first_name': "{{first_name}}",'last_name': "{{last_name}}",'email': "{{email}}",'phone': "{{phone}}", 'user_type': "{{user_type}}", 'password': "{{password}}", },
+      
       success: function (data) {
-        window.location.href = "signin"
-       }
+        console.log("data")
+        window.location.href = "/signin"
+      }
 
-  })
+  });
   } else {
     alert("OTP NOT MATCHED!");
-    window.location.href = "/home"
+    window.location.replace = "/"
     }
 }
 

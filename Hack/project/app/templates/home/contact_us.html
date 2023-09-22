@@ -1,10 +1,163 @@
 {% extends "home/base.html" %}
+{% load static %}
 
+{% block title %}Contact Us{% endblock title %}
+
+{% block style %}
+<style>
+  * {
+      box-sizing: border-box;
+      padding: 0px;
+      margin: 0px;
+      {% comment %} background-color: var(--green); {% endcomment %}
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      {% comment %} position: relative; {% endcomment %}
+    }
+    
+    /*colors*/
+    :root {
+      --blue: #31b085;
+      --green: #B6E2A1;
+      --white: #fff;
+      --red: red;
+    } 
+
+
+    
+    .contactus form {
+        background-color: var(--green);
+      border: 3px solid var(--white);
+      {% comment %} position: absolute; {% endcomment %}
+      padding-bottom: 10px;
+      margin-top: 20px;
+    }
+    .contactus input,.contactus textarea{
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      background-color: var(--white);
+    }
+    .contactus textarea{
+      height: 150px;
+    }
+    .contactus b {
+      display: block;
+      font-size: 18px;
+    }
+    
+    .contactus button {
+      background-color: var(--blue);
+      color: white;
+      padding: 14px 5%;
+      margin: 8px 35%;
+      border: none;
+      cursor: pointer;
+      width: 25%;
+      margin-bottom: 25px;
+    }
+    
+    .contactus button:hover {
+      opacity: 0.8;
+    }
+    
+    .contactus .imgcontainer {
+      text-align: center;
+      margin: 10px 0 10px 0;
+    }
+    
+    .contact {
+      padding: 16px;
+    }
+    
+    .contactus hr {
+      border: 1px solid #f1f1f1;
+      margin-bottom: 25px;
+    }
+    
+    .contactus span {
+      color: red;
+    }
+    
+    @media (min-width: 900px) {
+      .contactus form {
+        width: 50%;
+        left: 25%;
+      }
+    }
+    
+    /* Change styles for span and cancel button on extra small screens */
+    @media (min-width: 501px) and (max-width: 768px) {
+      .contactus form {
+        max-width: 85%;
+        left: 32%;
+        margin-top: 0px;
+      }
+      .contactus button {
+      background-color: var(--blue);
+      color: white;
+      padding: 14px 5%;
+      margin: 8px 35%;
+      border: none;
+      cursor: pointer;
+      width: 25%;
+      margin-bottom: 15px;
+    }
+    
+    }
+    
+    @media (min-width: 320px) and (max-width: 500px) {
+      .contactus form {
+        max-width: 100%;
+        left: 0px;
+        margin-top: 0px;
+      }
+      .contactus button {
+      margin-bottom: 10px;
+    }
+    
+    }
+    </style>
+
+{% endblock style %}
 
 {% block body %}
-<div class="container mt-5 mb-5">
-    <div class="row">
-        <h1>Contact Us</h1>
+
+<div class="container-fluid " style="background-color:var(--green)">
+    <div class="row  mb-5">
+        <div class="contactus mt-3">
+            <form action="" method="post" style="border: 3px solid var(--white)  ">
+              <div class="imgcontainer">
+                <img src="{% static "contact_us/image/feedback.jpg" %}" alt="Feedback Image" style="width: 10%;height: 10%;border-radius: 30%;">
+              </div>
+              <div class="contact container">
+                <p>Please share your valuable thoughts with us!!</p>
+                <hr>
+          
+          
+                <div class="row">
+                  <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <label for="email"><b>Email <span>*</span></b></label>
+                    <input type="email" placeholder="Enter Email ID" name="email" required>
+                  </div>
+                </div>
+          
+                <div class="row">
+                  <div class="col-12 ">
+                    <label for="feedback"><b>Feedback <span>*</span></b></label><br>
+                    <textarea type="text" class="feedback" placeholder="Enter your Feedback."></textarea>
+                  </div>
+                </div>
+          
+              <button type="button" class="submit_feedback">Submit</button>
+            </form>
+        </div>
+        
     </div>
 </div>
-{% endblock body %}
+
+
+
+  {% endblock body %}

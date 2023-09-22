@@ -301,7 +301,7 @@ span{
     </label>
     <div class="tacbox"><label>
       <input id="checkbox" type="checkbox" style="margin-bottom:15px" required><p>
-       I agree to these <a href="#">Terms and Conditions</a>.</p></label>
+       I agree to these <a href="term_and_condition">Terms and Conditions</a>.</p></label>
     </div>
   </div>    
     
@@ -370,26 +370,6 @@ function printmsg() {
   // to generated captcha or not
   if (usr_input == captcha.innerHTML) {
     let s = document.getElementById("key")
-
-    
-    {% comment %} $.ajax({
-
-      type: "POST",
-
-      url: '{% url "signup" %}',
-
-      data: { 'first_name': first_name, 'last_name': last_name, 'email': email, 'phone': phone, 'password': password, },
-
-      success: function (data) {
-
-          window.location.href = "/signin"
-
-      }
-
-    }) {% endcomment %}
-
-
-
 
   }
   else {

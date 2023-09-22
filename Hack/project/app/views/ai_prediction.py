@@ -32,10 +32,10 @@ def prediction(request):
 
         
         # Load in a model and evaluate it
-        loaded_model_1 = tf.keras.models.load_model("D:/Hack/project/app/ML/saved_trained_model")
+        loaded_model_1 = tf.keras.models.load_model("D:/Hack/project/app/ML/saved_efficientnet")
 
         # Create a function to import an image and resize it to be able to be used with our model
-        def load_and_prep_image(filename, img_shape=[450, 600]):
+        def load_and_prep_image(filename, img_shape=[224, 224]):
             # """
             # Reads an image from filename, turns it into a tensor
             # and reshapes it to (img_shape, img_shape, colour_channel).
@@ -55,7 +55,7 @@ def prediction(request):
             return img
 
         # Function to work with multi-class
-        def pred(model, filename, class_names, img_shape=[450, 600]):
+        def pred(model, filename, class_names, img_shape=[224, 224]):
         
             # Imports an image located at filename, makes a prediction on it with
             # a trained model and plots the image with the predicted class as the title.
@@ -74,7 +74,7 @@ def prediction(request):
 
        
         class_names = ["Actinic Keratosis", "Basal Cell Carcinoma", "Dermatofibroma", "Melanoma",
-               "Nevus", "Pigmented Benign Keratosis", "Squamous Cell Carcinoma", "Vascular Lesion"]
+               "Nevus", "Pigmented Benign Keratosis", "Seborrheic Keratosis", "Solar Lentigo", "Squamous Cell Carcinoma", "Vascular Lesion"]
 
         
         # prediction = []
@@ -102,7 +102,9 @@ def prediction(request):
                     "Pigmented Benign Keratosis": "Pigmented Benign Keratosis is a common noncancerous waxy or scaly and slightly raised skin growth, which develops on the face, neck, chest or back with age.",
                     "Dermatofibroma": "A dermatofibroma is a common benign fibrous nodule usually found on the skin of the lower legs. Sometimes attributed to minor trauma including insect bites, injections, or a rose thorn injury, but not consistently.",
                     "Melanoma": "Melanoma, the most serious type of skin cancer. While the exact cause isn't clear, but exposure to ultraviolet (UV) radiation from sunlight or tanning lamps and beds increases your risk of developing melanoma.",
-                    "Vascular Lesion": "Vascular lesions are relatively common abnormalities of the skin and underlying tissues, more commonly known as birthmarks."}
+                    "Vascular Lesion": "Vascular lesions are relatively common abnormalities of the skin and underlying tissues, more commonly known as birthmarks.",
+                    "Solar Lentigo": "Solar Lentigo is a harmless patch of darkened skin. It results from exposure to UV radiation, which causes local proliferation of melanocytes and accumulation of melanin within the skin cells",
+                    "Seborrheic Keratosis": "Seborrheic keratoses are epidermal skin tumors that commonly present in adult and elderly patients. They are benign skin lesions and often do not require treatment"}
 
         def mode_pred(prediction, pred_prob, class_names, name_desc):
             pred_dict = {}

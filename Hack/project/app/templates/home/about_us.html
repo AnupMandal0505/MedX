@@ -1,11 +1,283 @@
 {% extends "home/base.html" %}
+{% load static %}
 
+{% block title %}About Us{% endblock title %}
 
+{% block style %}
+<style>
+    :root{
+        --blue:#31b085;
+        --green: #B6E2A1;
+      }
+      *{
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0px;
+      }
+      
+      html {
+        box-sizing: border-box;
+      }
+      
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      
+      .about-section h5{
+        font-weight: bold;
+      }
+      .us .row{
+        padding: 0 7%;
+      }
+      .us .column {
+        float: left;
+        width: 33.3%;
+        margin-bottom: 16px;
+        padding: 0 7px;
+      }
+      .us h3,.us p{
+        text-align: center;
+      }
+      .us h3{
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+      }
+      .us p{
+        margin-top: 10px;
+        padding-bottom: 10px;
+      }
+      .us .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+        width: 86%;
+      
+      }
+      .about-section h2,.about-section p{
+        text-align: left;
+      }
+      .about-section h2{
+        margin-bottom: 7px;
+      }
+      .about-section p{
+        font-size: 17px;
+        padding-bottom: 4px;
+      }
+      
+      .about-section {
+        padding: 40px 80px;
+        text-align: left;
+        background-color: var(--green);
+        color: black;
+      }
+      
+      .about {
+        padding: 0 7%;
+      }
+      
+      .about::after, .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      
+      .about .title {
+        color: grey;
+      }
+      
+      .us .button {
+        border: none;
+        outline: 0;
+        display: inline-block;
+        padding: 8px;
+        color: white;
+        background-color: var(--blue);
+        text-align: center;
+        cursor: pointer;
+        width: 100%;
+      }
+      
+      .us .button:hover {
+        background-color: #555;
+      }
+      
+      @media screen and (max-width: 650px) {
+        .us .column {
+          width: 100%;
+          display: block;
+        }
+      } 
+</style>
+{% endblock style %}
 
 {% block body %}
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <h1>About Us</h1>
+        <div class="about-section">
+  
+
+            <h5>About Us </h5>
+            <p>
+            Welcome to <b>MedX</b>, your trusted source for cutting-edge AI-powered solutions in the 
+            field of dermatology. We are passionate about revolutionizing the way dermatological conditions are diagnosed and treated. Our mission is to empower both healthcare professionals and individuals with accessible and
+            accurate preliminary diagnoses of dermatological manifestations using the latest advancements in artificial intelligence.</p>
+            <br><br>
+            
+            <h5>Our Vision</h5>
+            
+            <p>At <b>MedX</b>, we envision a world where dermatological health is easily accessible and understood 
+            by everyone. We believe that technology can bridge the gap between patients and healthcare providers, making early diagnosis and intervention more effective than ever before.</p>
+            <br>
+            <h5>Who We Are</h5>
+            <p>
+            We are a team of dedicated developers with expertise in dermatology, artificial intelligence, and healthcare technology. Our journey began with a shared commitment to improve dermatological healthcare by harnessing the potential of AI. With years of research, development, 
+            and collaboration with medical experts, we have created a powerful AI-based tool that can assist in the preliminary diagnosis of a wide range of dermatological conditions.</p>
+            <br><br>
+            
+            <h5>What Sets Us Apart</h5>
+            <p>
+            1. Advanced AI Algorithms: Our AI algorithms are at the heart of our platform. They have been trained on vast datasets of dermatological images and have the ability to recognize subtle patterns and variations that may not be immediately apparent to the human eye.
+            </p>
+            <p>
+            2. Accurate and Reliable: We prioritize accuracy in our diagnostic capabilities. Our tool is constantly learning and improving, ensuring that the diagnoses it provides are as precise as possible.
+            </p>
+            <p>
+            3. User-Friendly Interface: We have designed our platform with both healthcare professionals and individuals in mind. Our user-friendly interface allows for easy navigation, making it accessible to a wide range of users.
+            </p>
+            <p>
+            5. Privacy and Security: We understand the importance of patient data security. Our platform is built with robust privacy measures to ensure that all information is handled with the utmost care and confidentiality.</p>
+            <br><br>
+            <h5>Our Commitment to Dermatology</h5>
+            <p>
+            We are committed to supporting the dermatology community and the individuals who rely on our services. Our goal is to assist dermatologists 
+            in their clinical practice, streamline the diagnostic process, and improve patient outcomes. We also aim to provide individuals with valuable insights into their 
+            skin health, enabling them to take proactive steps towards their well-being.</p>
+            <br><br>
+            
+            <h5>Join Us in the Dermatology Revolution</h5>
+            <p>
+            We invite you to explore our website, use our AI-based tool for preliminary diagnosis, and join us in the journey towards a healthier and more informed future in dermatology. 
+            Together, we can revolutionize the way dermatological manifestations are diagnosed and treated, ensuring that everyone has access to quality skin healthcare.
+            
+            Thank you for choosing <b>MedX</b> as your partner in dermatological health.</p>
+            <br><br>
+            <h5>Future Mission</h5>
+            <p>
+            Our future mission at <b>MedX</b> is to continually advance the field of dermatology through AI-driven innovation.
+             We aim to expand our capabilities beyond preliminary diagnosis to provide comprehensive support for both healthcare professionals and individuals in managing dermatological conditions. By leveraging the power of 
+             artificial intelligence and data-driven insights, we aspire to play a pivotal role in improving the overall quality of skin healthcare worldwide.</p>
+            <br><br>
+            <h5>Future Vision</h5>
+            <p>
+            In the years to come, we envision <b>MedX</b> as the global leader in dermatological AI solutions. Our vision is to create a seamless ecosystem that empowers dermatologists with state-of-the-art tools for accurate diagnosis, treatment recommendations, 
+            and ongoing patient care. Simultaneously, we strive to be the go-to resource for individuals seeking trusted information and personalized guidance for their skin health.</p>
+            <br><br>
+            <h5>Expanding Accessibility</h5>
+            <p>
+            We are dedicated to expanding accessibility to our platform, ensuring that it reaches underserved communities, remote areas, and regions with limited access to specialized 
+            dermatological care. Our commitment to inclusivity drives us to develop partnerships with healthcare organizations, non-profits, and governments to make 
+            our technology available to those who need it most.</p>
+            <br><br>
+            <h5>Continuous Learning and Improvement</h5>
+            <p>
+            Our future holds a relentless pursuit of knowledge and improvement. We will invest in ongoing research and development, collaborating with leading dermatologists, AI experts, and healthcare professionals to 
+            enhance our AI algorithms continually. By staying at the forefront of technological advancements, we will strive for even greater 
+            diagnostic accuracy and clinical support.</p>
+            <br><br>
+            <h5>Empowering Individuals</h5>
+            <p>
+            We believe that everyone should have the tools and knowledge to take control of their skin health. Our future efforts will focus on empowering individuals with personalized skin health insights, self-care recommendations, 
+            and access to resources that promote healthy living. We aim to be a trusted companion on their journey to better skin health.</p>
+            <br><br>
+            <h5>Global Impact</h5>
+            <p>
+            We aspire to make a meaningful global impact on dermatological health. Our future vision includes partnerships with international healthcare organizations, academic institutions, and governmental bodies to address skin 
+            health challenges on a global scale. Together, we aim to reduce the burden of skin diseases and improve the well-being of people worldwide.</p>
+            <br><br>
+            <h5>Ethical and Responsible AI</h5>
+            <p>
+            As we grow, we remain committed to ethical and responsible AI practices. Our future mission includes a dedication to transparency, 
+            fairness, and accountability in all aspects of our AI development and deployment. We will actively engage with regulatory authorities to ensure compliance with the highest ethical standards.</p>
+            <br><br>
+            <h5>Join Us in Shaping the Future of Dermatology</h5>
+            <p>
+            We invite healthcare professionals, researchers, individuals, and organizations to join us in shaping the future of dermatology. Together, we can harness the potential of AI and technology to create 
+            a world where skin health is understood, accessible, and optimized for all. Thank you for being a part of our 
+            journey towards a brighter and healthier future in dermatology.</p>
+            <br>
+            
+              
+            </div>
+            <br><br><br>
+            <div class="us">
+            <h2 style="text-align:center">Our Team</h2><br>
+            <div class="row">
+              <div class="column">
+                <div class="card">
+                  <img src="{% static "about_us/image/samartha.jpg" %} " class="img-fluid"  style="width:55%;height: 10%;margin-left: 27.5%;margin-bottom: 1%;margin-top: 1.9%;">
+                  <div class="about container">
+                    <h3>Samartha Chatterjee</h3>
+                    <p class="title">FrontEnd Developer</p>
+                    <p><a href="https://www.linkedin.com/in/samartha-chatterjee-b01721240"><button class="button">Know More</button></a></p>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="column">
+                <div class="card">
+                  <img src="{% static "about_us/image/shreyan.jpg" %}"   style="width:45%;height: 40%;margin-left: 27.5%;margin-bottom: 1%;margin-top: 1.9%;">
+                  <div class="about container">
+                    <h3>Shreyan Naskar</h3>
+                    <p class="title">ML Developer</p>
+                    <p><a href="https://www.linkedin.com/in/shreyan-naskar-38b583234/"><button class="button">Know More</button></a></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="column">
+                <div class="card">
+                  <img src="{% static "about_us/image/ashmita.jpg" %}"  style="width:45%;height: 40%;margin-left: 27.5%;margin-bottom: 1%;margin-top: 1.9%;">
+                  <div class="about container">
+                    <h3>Asmita Dutta</h3>
+                    <p class="title">FrontEnd Developer</p>
+                    <p><a href="https://www.linkedin.com/in/asmita-dutta-1b86aa221/"><button class="button">Know More</button></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                  <div class="card">
+                    <img src="{% static "about_us/image/soumyajit.jpg" %}"  style="width:45%;height: 40%;margin-left: 27.5%;margin-bottom: 1%;margin-top: 1.9%;">
+                    <div class="about container">
+                      <h3>Soumyajit Pal</h3>
+                      <p class="title">BackEnd Developer</p>
+                      <p><a href="https://www.linkedin.com/in/soumyajit-pal-110625224"><button class="button">Know More</button></a></p>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="column">
+                  <div class="card">
+                    <img src="{% static "about_us/image/anup.jpg" %}" style="width:45%;height: 40%;margin-left: 27.5%;margin-bottom: 1%;margin-top: 1.9%;">
+                    <div class="about container">
+                      <h3>Anup Mandal</h3>
+                      <p class="title">BackEnd Developer</p>
+                      <p><a href=""><button class="button">Know More</button></a></p>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="column">
+                  <div class="card">
+                    <img src="{% static "about_us/image/ritam.jpg" %}" style="width:45%;height: 40%;margin-left: 27.5%;margin-bottom: 1%;margin-top: 1.9%;">
+                    <div class="about container">
+                      <h3>Ritam Biswas</h3>
+                      <p class="title">FrontEnd Developer</p>
+                      <p><a href="https://www.linkedin.com/in/ritam-biswas-2b87b7232/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3BAPu1Y70qRhKph1CzJlfw7g%3D%3D"><button class="button">Know More</button></a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
     </div>
 </div>
 {% endblock body %}

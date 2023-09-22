@@ -177,7 +177,7 @@
           <div class="col-sm-12 col-lg-6 col-md-6 col-xl-6">
             <label for="appointment_for">Upload your predicted diagnosis (if any):
             </label>
-            <input type="file" name="predicted_file" value="" class="form-control form-control-input" required></input>
+            <input type="file" name="predicted_file" value="" class="form-control form-control-input"></input>
           </div>
         </div>
         <!--symptoms-->
@@ -192,7 +192,8 @@
         <div class=" row">
           <label for="date">Preferred Date: *</label>
           <div class="col-sm-12 col-lg-12 col-md-12 col-xl-12">
-            <input type="date" name="date" value="" class="form-control form-control-input" required></input>
+            <input type="date" name="date" id="userDate" value="" class="form-control form-control-input"   required></input>
+            <p id="key"></p>
           </div>
         </div>
         <!--radio-->
@@ -210,9 +211,8 @@
           </div>
         </div>
 
-
         <div class="row">
-          <button type="submit" class="btn"  >Request For Appointment</button>
+          <button type="submit" class="btn"  id="compareButton" >Request For Appointment</button>
         </div>
       </div> 
     </form>
@@ -220,6 +220,27 @@
   </div>
 </div>
 
+<script>
+
+  //print message
+  document.getElementById("compareButton").addEventListener("click", function () {
+  const usr_input = document.getElementById("userDate").value;
+
+
+  // Convert the user-inputted date to a JavaScript Date object
+  const userDate = new Date(usr_input);
+  
+  // Get the current date
+  const currentDate = new Date();
+
+  if (userDate < currentDate) {
+    alert("Select Valid Date.");
+    document.getElementById("userDate").value = "";
+  } 
+
+
+});
+</script>
 
 
 {% endblock body %}

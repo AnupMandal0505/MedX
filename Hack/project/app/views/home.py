@@ -33,14 +33,14 @@ from django.contrib import messages
 
 def home(request):
     
-    if request.method == 'POST':
-        photos=request.FILES['file']
-        print("photo :",photos)
+    # if request.method == 'POST':
+    #     photos=request.FILES['file']
+    #     print("photo :",photos)
 
-        users=Department.objects.get(dept_id='dept3195')
-        users.signature=photos
-        users.save()
-        redirect('home')
+    #     users=Department.objects.get(dept_id='dept3195')
+    #     users.signature=photos
+    #     users.save()
+    #     redirect('home')
 
 
         

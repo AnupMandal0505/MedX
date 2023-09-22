@@ -1,11 +1,25 @@
 from django.shortcuts import render,redirect
-from app.models import Appointment,User
+from app.models import Appointment,User,Department
 import random
 from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='signin')
 def doctor_profile(request):
+  
+    try:
+        doctor_data = Department.objects.filter()
+        context = {
+            'doctor_data' :doctor_data
+        }
+    except:
+        context = {
+            'doctor_data' :"Data Not Found"
+        }
+    return render(request,'dasboard/user/doctor_profile.html',context)
+
+
+def doc_prof(request):
   
     try:
         doctor_data = User.object.filter(user_type = "doctor")
@@ -16,4 +30,4 @@ def doctor_profile(request):
         context = {
             'doctor_data' :"Data Not Found"
         }
-    return render(request,'dasboard/user/doctor_profile.html',context)
+    return render(request,'home/doc_prof.html',context)

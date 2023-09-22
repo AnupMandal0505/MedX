@@ -29,6 +29,10 @@ BLOOD_GROUP = (
     ("6", "O-"),
 )
 
+CONSULTAION_CHOICE = (
+    ("online", "online"),
+    ("offline", "offline"),
+)
 
 class Appointment(models.Model):
     appointment_ref = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -42,12 +46,13 @@ class Appointment(models.Model):
     relation = models.CharField(max_length = 20,choices = RELATION_CHOICES,default = '1')
     blood_group = models.CharField(max_length = 20,choices = BLOOD_GROUP,default = 'Male')
     gender = models.CharField(max_length = 20,choices = GENDER,default = '1')
-    # predicted_diagnosis = models.CharField(max_length=255, blank=True)
-    predicted_file = models.FileField(upload_to='predicted_diagnosis/',max_length=250,null=True,default=None)
+    meet_link = models.CharField(max_length=255, blank=True,default="none")
+    predicted_file = models.FileField(upload_to='predicted_diagnosis/',max_length=250,blank=True,default=None)
     symptoms = models.TextField()
     appointment_ref = models.ForeignKey(User, on_delete=models.CASCADE)
     doctor = models.CharField(max_length=255, blank=True)
     status = models.BooleanField(default=False)
+    consultation=models.CharField(max_length = 20,choices = CONSULTAION_CHOICE,default = 'offline')
 
     appointment_id_slug=AutoSlugField(populate_from='appointment_id',
                          unique=True,null=True,default=None)

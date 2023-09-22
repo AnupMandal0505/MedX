@@ -7,8 +7,12 @@
         color: black;
     }
     p{
-        border:2px solid black;
+        {% comment %} border:2px solid black; {% endcomment %}
         text-align:center;
+    }
+
+    .form-control-input{
+      background-color:white;
     }
 </style>
 {% endblock style %}
@@ -22,23 +26,29 @@
       <div class="card-body">
         <form action=" " id="edit_profile" method="post" enctype="multipart/form-data">
           {% csrf_token %}
+
+          
           <div class="row">
             <div class="col">
-              <input type="file" id="file" class="form-control" name="profile">
+              <input type="file" id="file" class="form-control form-control-input" name="profile">
               
               <p id="message"></p>
             </div>
+
+            <div class="col">
+              <input type="text" class="form-control form-control-input" value="{{request.user.first_name}}" name="first_name">
+            </div>
             
             <div class="col">
-              <input type="text" class="form-control" value="{{request.user.name}}" name="name">
+              <input type="text" class="form-control form-control-input" value="{{request.user.last_name}}" name="last_name">
             </div>
           </div>
           <div class="row mt-5">
             <div class="col">
-              <input type="text" class="form-control" value="{{request.user.email}}" name="email">
+              <input type="text" class="form-control form-control-input" value="{{request.user.email}}" name="email">
             </div>
             <div class="col">
-              <input type="text" class="form-control" value="{{request.user.city}}"  name="city">
+              <input type="text" class="form-control form-control-input" value="{{request.user.city}}"  name="city">
             </div>
           </div>
 

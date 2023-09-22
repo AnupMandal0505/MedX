@@ -13,7 +13,7 @@
     margin-top: 20px;
     width: 100%;
     padding: 15px 20px;
-    background-color: rgb(155, 231, 155);
+    background-color:#258464  ;
     transition: var(--tran-05); 
     margin-bottom: 10px;
 }
@@ -139,37 +139,42 @@ body.dark.card.box {
     </div>
 </div>
 
+    {% if request.user.user_type == "user" %}
 
-<div class="container mt-5" style="width: 95%;">
-    <div class="row">
-        <div class="card">
-            <div class="box box3">
-              <span class="text"
-                ><h1><u> INSTRUCTIONS</u></h1>
-              </span>
-              <br />
-              <span class="text">
-                1. Please click 5 pictures of your affected area for upload.
-              </span>
-              <span class="text">
-                2. The manifestation should be clearly visible at the central area
-                of the pictures.
-              </span>
-              <span class="text">
-                3. Click pictures from different angles at a well lit environment.
-              </span>
-              <span class="text">
-                4. Try to trim or shave the surrounding area if possible for clear
-                visibility.
-              </span>
-              <a href="/check_diagnosis" class=" btn choose">Diagnose</a>
+        <div class="container mt-5" style="width: 95%;">
+            <div class="row">
+                <div class="card">
+                    <div class="box box3">
+                    <span class="text"
+                        ><h1><u> INSTRUCTIONS</u></h1>
+                    </span>
+                    <br />
+                    <span class="text">
+                        1. Please click 5 pictures of your affected area for upload.
+                    </span>
+                    <span class="text">
+                        2. The manifestation should be clearly visible at the central area
+                        of the pictures.
+                    </span>
+                    <span class="text">
+                        3. Click pictures from different angles at a well lit environment.
+                    </span>
+                    <span class="text">
+                        4. Try to trim or shave the surrounding area if possible for clear
+                        visibility.
+                    </span>
+                    <a href="/check_diagnosis" class=" btn choose">Diagnose</a>
+                    </div>
+                </div>
+                <span class="caution-text">
+                    <b>**Caution<b>: The diagnosis predicted may vary from the actual skin
+                    condition. Please refer to verified specialists at our platform for a
+                    more accurate diagnosis.
+                </span>
             </div>
-          </div>
-          <span class="caution-text">
-            <b>**Caution<b>: The diagnosis predicted may vary from the actual skin
-            condition. Please refer to verified specialists at our platform for a
-            more accurate diagnosis.
-          </span>
-    </div>
-</div>
+        </div>
+    
+    {% endif %}
+
+
 {% endblock body %}
