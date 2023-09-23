@@ -29,6 +29,7 @@ def appointment(request,slug):
         relation=request.POST['relation']
         doctor_name=request.POST['doctor_name']
         symptoms=request.POST['symptoms']
+        consultation=request.POST['consultation']
         # ran = random.randint(999,9999)
         appointment_ref=request.user
         appointment_id=appointment_unique_number("appoint")
@@ -36,9 +37,9 @@ def appointment(request,slug):
 
         try:
             predicted_file=request.FILES['predicted_file']
-            df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,symptoms=symptoms,predicted_file=predicted_file)        
+            df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,symptoms=symptoms,consultation=consultation,predicted_file=predicted_file)        
         except:
-            df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,symptoms=symptoms)        
+            df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,consultation=consultation,symptoms=symptoms)        
 
         return redirect('dasboard')
     # try:

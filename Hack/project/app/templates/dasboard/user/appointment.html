@@ -123,10 +123,18 @@
       </div>
       <div class=" row">
         <!--num-->
-        <div class=" col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class=" col-sm-6 col-md-6 col-lg-6 col-xl-6">
           <label for="tel">Contact Number: *</label>
           <input type="number" class="form-control form-control-input"  placeholder="Enter Contact Number" name="contact"
             pattern="[0-9]" required>
+        </div>
+
+        <div class=" col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <label for="tel">Consultation: *</label>
+          <select class="form-control form-control-input" name="consultation" required>
+            <option value="online">Online</option>
+            <option value="offline">Offline</option>
+          </select>
         </div>
       </div>
       <div class=" row">
@@ -233,7 +241,7 @@
   // Get the current date
   const currentDate = new Date();
 
-  if (userDate < currentDate) {
+  if (userDate <= currentDate) {
     alert("Select Valid Date.");
     document.getElementById("userDate").value = "";
   } 
