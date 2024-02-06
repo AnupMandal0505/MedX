@@ -68,7 +68,7 @@ def update_password(request):
         # password=make_password(row_password)
 
         try:
-            user=User.object.get(phone=phone) 
+            user=User.objects.get(phone=phone) 
             otp=random.randint(1000,9999)
             mail(user.first_name,user.email,otp)
             context={

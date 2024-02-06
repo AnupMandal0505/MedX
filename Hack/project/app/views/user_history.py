@@ -29,7 +29,7 @@ def payment_history(request):
 
 @login_required(login_url='signin')
 def user_data(request):
-    user_data = User.object.all()
+    user_data = User.objects.all()
     context = {
         'user_data' :user_data
     }

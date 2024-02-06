@@ -73,7 +73,7 @@ class register(View):
             
             
             try:
-                user=User.object.get(phone=phone)
+                user=User.objects.get(phone=phone)
                 messages.warning(request, 'Already Register !')
                 return redirect('signin')
             except:
@@ -85,7 +85,7 @@ class register(View):
                         password=phone
                         mail(phone,password,email)
                         password=make_password(password)
-                        ab = User.object.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,status=0)
+                        ab = User.objects.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,status=0)
                     
                         messages.success(request, f'{user_type} saved Successfully')
                         return redirect('dasboard')
@@ -100,7 +100,7 @@ class register(View):
                         password=phone
                         mail(phone,password,email)
                         password=make_password(password)
-                        ab = User.object.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,profile=profile,status=0)
+                        ab = User.objects.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,profile=profile,status=0)
                     
                         ba = Department.objects.create(dept_ref=ab,dept_id=dept_id,position=position,qualification=qualification,pan=pan,salary=salary,signature=signature)
                     
