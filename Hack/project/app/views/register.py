@@ -130,17 +130,36 @@ class register(View):
 
 
 
-@csrf_exempt
+# @csrf_exempt
+# def verify_user(request):
+#     if request.method == 'POST':
+#         phone=request.POST['phone']
+#         email=request.POST['email']
+#         first_name=request.POST['first_name']
+#         last_name=request.POST['last_name']
+#         user_type=request.POST['user_type']
+#         row_password=request.POST['password']
+#         password=make_password(row_password)
+#         ab = User.object.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password,user_type=user_type,status=1)
+#         mail(phone,row_password,email)    
+
+@csrf_exempt  
 def verify_user(request):
     if request.method == 'POST':
-        phone=request.POST['phone']
-        email=request.POST['email']
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
-        user_type=request.POST['user_type']
-        row_password=request.POST['password']
-        password=make_password(row_password)
-        
-        ab = User.object.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password,user_type=user_type,status=1)
-        mail(phone,row_password,email)    
-        
+        phone = request.POST['phone']
+        email = request.POST['email']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        user_type = request.POST['user_type']
+        row_password = request.POST['password']
+        password = make_password(row_password)
+        try:
+            # Create the user
+            new_user = User.objects.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password, user_type=user_type, status=1)
+            # Send email
+            mail(phone, row_password, email)
+            # Return success response
+            return JsonResponse({'success': True, 'message': 'User created successfully'})
+        except Exception as e:
+            # Return error response
+            return JsonResponse({'success': False, 'message': str(e)})
