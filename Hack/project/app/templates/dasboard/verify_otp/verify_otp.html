@@ -52,9 +52,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-form{
+.form{
   
-  margin-left: 40%;
+  margin-left: 50%;
   margin-top: 15%;
 }
 
@@ -108,8 +108,8 @@ button:hover {
 
 
 
-  <form method="get" >
-  <div class="container" >
+
+  <div class="container form" >
     <div id="inputs" class="inputs" >
       <h2 style="text-align: center;">Enter OTP</h2>
         <input class="OTP1" type="text" 
@@ -123,7 +123,6 @@ button:hover {
     </div>
     <button onclick="otp_checker()">SUBMIT</button>
   </div>
-  </form> 
 </body>
 </html>
 
@@ -166,43 +165,48 @@ inputs.addEventListener("keyup", function (e) {
 //check otp
 function otp_checker() {
 
-    generate_otp="{{otp}}"
+  const generate_otp = "{{otp}}";
   
-    const a = parseInt(generate_otp.substr(0,1));
-    const b = parseInt(generate_otp.substr(1,2));
-    const c = parseInt(generate_otp.substr(2,3));
-    const d = parseInt(generate_otp.substr(3,4));
+  const a = parseInt(generate_otp.slice(0,1));
+  const b = parseInt(generate_otp.slice(1,2));
+  const c = parseInt(generate_otp.slice(2,3));
+  const d = parseInt(generate_otp.slice(3,4));
+  
   
   const inputBox1 = document.getElementsByClassName("OTP1")[0];
   const inputBox2 = document.getElementsByClassName("OTP2")[0];
   const inputBox3 = document.getElementsByClassName("OTP3")[0];
   const inputBox4 = document.getElementsByClassName("OTP4")[0];
 
+  
+  
   // Parse the input values to integers
   const digit1 = parseInt(inputBox1.value);
   const digit2 = parseInt(inputBox2.value);
   const digit3 = parseInt(inputBox3.value);
   const digit4 = parseInt(inputBox4.value);
 
+
   if (a === digit1 && b === digit2 && c === digit3 && d === digit4) {
     $.ajax({
 
-        type: "POST",
+      type: "POST",
+      url: '{% url "VerifyPasswordOtp" %}',
+      data: {  'phone': "{{phone}}",'password': "{{password}}"  },
+ 
+      success: function (data) {
+        {% comment %} console.log("data") {% endcomment %}
+        window.location.href = "/signin"
+      }
 
-        url: '{% url "/VerifyPasswordOtp" %}',
-
-        data: { 'phone': "{{phone}}",'password': "{{password}}" },
-
-        success: function (data) {
-
-            window.location.href = "/update_password"
-        }
-
-    })
+      
+  });
   } else {
     alert("OTP NOT MATCHED!");
-    location.replace("signup.html");
-  }
+    {% comment %} window.location.replace = "/" {% endcomment %}
+    window.location.href = "/"
+
+    }
 }
 
 </script>

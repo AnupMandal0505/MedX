@@ -7,20 +7,33 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 
 
 from django.contrib import messages
+from django.template.loader import render_to_string
 
-def mail(user_name,email,otp):
 
-    User_name=user_name
-    otp=otp
-    subject='otp verify'
-    form_email='mastikipathshala828109@gmail.com'
-    msg=(f'<p>Hii, <b>{User_name}</b><br>otp : <b> {otp}</b> </p>')
-    # to='anupmandal828109@gmail.com'
-    to=email
-    msg=EmailMultiAlternatives(subject,msg,form_email,[to])
-    msg.content_subtype='html'
-    msg.send()
 
+def mail_Forget_Password(first_name,email,otp):
+    try:
+        subject = 'Password OTP'
+        from_email = 'mastikipathshala828109@gmail.com'
+
+        # Correct template_path and render the HTML template with the provided data
+        template_path = r'mail_templates\otp_ForgetPassword.html'
+        pin=random.randint(9999,99999)
+        context = {
+                    'first_name': first_name,
+                'otp':otp,
+                }
+        message = render_to_string(template_path, context)
+
+        to = email
+
+        msg = EmailMultiAlternatives(subject, '', from_email, [to])
+        msg.attach_alternative(message, 'text/html')
+        msg.send()
+        return pin
+    except Exception as e:
+            print("smg errr:",e)
+            raise Exception("Prob")
 
 
 # def update_password(request):
@@ -61,32 +74,23 @@ def mail(user_name,email,otp):
 
 
 def update_password(request):
-    
     if request.method == 'POST':
-        phone=request.POST['phone']
-        password=request.POST['password']
-        # password=make_password(row_password)
+        phone = request.POST.get('phone')
+        password = request.POST.get('password')
 
         try:
-            user=User.objects.get(phone=phone) 
-            otp=random.randint(1000,9999)
-            mail(user.first_name,user.email,otp)
-            context={
-                'otp':otp,
-                'phone':phone,
-                'password':password
-
-            }
-
-            messages.info(request, "Otp Sent Your Email Id Please Check.")
-            return render(request,'dasboard/verify_otp/verify_otp.html',context)
-
-        except:
-            messages.info(request, "Incorrect Register Phone Number .")
-            redirect('dasboard')
+            user = User.objects.get(phone=phone)
+            otp = random.randint(1000, 9999)
+            mail_Forget_Password(user.first_name, user.email, otp)  # Assuming you have a function to send OTP via email
+            context = {'otp': otp, 'phone': phone, 'password': password}
+            messages.info(request, "OTP Sent to Your Email. Please Check.")
+            return render(request, 'dasboard/verify_otp/verify_otp.html', context)
+        except User.DoesNotExist:
+            messages.error(request, "Incorrect Phone Number. Please try again.")
+            return redirect('signin')
     else:
-        return render(request,'dasboard/update_profile/update_password.html')
-
+        return render(request, 'dasboard/update_profile/update_password.html')
+    
 
 
 
