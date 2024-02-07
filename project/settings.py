@@ -28,7 +28,7 @@ DEBUG = True
 
 # ALLOWED_HOSTS = ['MedX.onrender.com/']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['medx-z7bs.onrender.com']
 
 # Application definition
 
