@@ -33,16 +33,16 @@ from django.template.loader import render_to_string
 
 
 
-def mailOTP(name,otp,email):
-    name=name
-    otp=otp
-    subject='Verify OTP'
-    form_email='mastikipathshala828109@gmail.com'
-    msg=(f'<p>welcome HMS <br>Hii,<b>{name}</b> <br>otp : {otp}<b></b> </p>')
-    to=email
-    msg=EmailMultiAlternatives(subject,msg,form_email,[to])
-    msg.content_subtype='html'
-    msg.send()
+# def mailOTP(name,otp,email):
+#     name=name
+#     otp=otp
+#     subject='Verify OTP'
+#     form_email='mastikipathshala828109@gmail.com'
+#     msg=(f'<p>welcome HMS <br>Hii,<b>{name}</b> <br>otp : {otp}<b></b> </p>')
+#     to=email
+#     msg=EmailMultiAlternatives(subject,msg,form_email,[to])
+#     msg.content_subtype='html'
+#     msg.send()
 
 def mail_User_Info(first_name,last_name,phone,password,email):
     try:
@@ -71,28 +71,28 @@ def mail_User_Info(first_name,last_name,phone,password,email):
         raise Exception("Prob")
 
 
-# def mailOTP(name,otp,email):
-#     try:
-#         subject = 'Account Verification'
-#         from_email = 'mastikipathshala828109@gmail.com'
+def mailOTP(name,otp,email):
+    try:
+        subject = 'Account Verification'
+        from_email = 'mastikipathshala828109@gmail.com'
 
-#         # Correct template_path and render the HTML template with the provided data
-#         template_path = 'mail_templates\otp_verify.html'
-#         pin=random.randint(9999,99999)
-#         context = {'name': name,
-#                 'otp':otp,
-#                 }
-#         message = render_to_string(template_path, context)
+        # Correct template_path and render the HTML template with the provided data
+        template_path = 'mail_templates\otp_verify.html'
+        pin=random.randint(9999,99999)
+        context = {'name': name,
+                'otp':otp,
+                }
+        message = render_to_string(template_path, context)
 
-#         to = email
+        to = email
 
-#         msg = EmailMultiAlternatives(subject, '', from_email, [to])
-#         msg.attach_alternative(message, 'text/html')
-#         msg.send()
-#         return pin
-#     except Exception as e:
-#         print("smg errr:",e)
-#         raise Exception("Prob")
+        msg = EmailMultiAlternatives(subject, '', from_email, [to])
+        msg.attach_alternative(message, 'text/html')
+        msg.send()
+        return pin
+    except Exception as e:
+        print("smg errr:",e)
+        raise Exception("Prob")
 
 
 # Unique Id........................................
