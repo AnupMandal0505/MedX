@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,10 +31,8 @@ SECRET_KEY = 'django-insecure-01ze@3+%gd%7vc3duqh&dssh*jji^m29%m!!gi-tpsz7pyqh$v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['MedX.onrender.com/']
 
 ALLOWED_HOSTS = ['medx-z7bs.onrender.com']
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -129,8 +132,8 @@ STATIC_ROOT = BASE_DIR / 'collectstatic'
 # smtp email send
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mastikipathshala828109@gmail.com'
-EMAIL_HOST_PASSWORD = 'rbrrafaesffcjkrw'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 # Store Image Folder name Media
