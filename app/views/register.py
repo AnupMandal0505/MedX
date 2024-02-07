@@ -77,7 +77,7 @@ def mailOTP(name,otp,email):
         from_email = 'mastikipathshala828109@gmail.com'
 
         # Correct template_path and render the HTML template with the provided data
-        template_path = r'mail_templates\otp_verify.html'
+        template_path = r'templates\mail_templates\otp_verify.html'
         pin=random.randint(9999,99999)
         context = {'name': name,
                 'otp':otp,
