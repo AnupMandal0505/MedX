@@ -67,8 +67,8 @@ def mail_User_Info(first_name,last_name,phone,password,email):
         msg.send()
         return pin
     except Exception as e:
-            print("smg errr:",e)
-            raise Exception("Prob")
+        print("smg errr:",e)
+        raise Exception("Prob")
 
 
 def mailOTP(name,otp,email):
@@ -91,8 +91,8 @@ def mailOTP(name,otp,email):
         msg.send()
         return pin
     except Exception as e:
-            print("smg errr:",e)
-            raise Exception("Prob")
+        print("smg errr:",e)
+        raise Exception("Prob")
 # Unique Id........................................
 # def user_unique_number(name):
 #     name=name
