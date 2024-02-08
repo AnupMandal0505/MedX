@@ -131,5 +131,6 @@ def edit_profile(request):
         
         us.save()
         return redirect('dasboard')
+    else:
 
-    return render(request,'dasboard/update_profile/profile.html')
+        return render(request,'dasboard/update_profile/edit_profile.html')
