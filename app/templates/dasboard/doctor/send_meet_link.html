@@ -1,0 +1,23 @@
+{% extends "dasboard/base.html" %}
+
+
+{% block body %}
+
+<div class="container mt-5" style="width: 95%;">
+    <div class="row card">
+       
+    <form action="/send_meet_link/{{appointment_id}}" method="post">
+        {% csrf_token %}
+        <div class="mb-3 mt-3">
+        <label class="form-label">Update Meet Link:</label>
+        <input type="text" class="form-control"  placeholder="Enter Meet Link" name="meet_link">
+        </div>
+       
+        <button type="submit" class="btn btn-info mb-3">Submit</button>
+    </form>
+
+    </div>
+</div>
+
+
+{% endblock body %}

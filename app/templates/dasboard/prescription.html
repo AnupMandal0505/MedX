@@ -1,0 +1,143 @@
+{% extends 'dasboard/base.html' %}
+{% block style %}
+<style>
+  :root {
+    --black: #000;
+    --darkgreen: #31b085;
+    --green: #B6E2A1;
+    --white: #fff;
+    --grey: rgb(135, 126, 126);
+  }
+
+
+  .wrapper{
+    width: 100%;
+    background-color: var(--white);
+    margin-top: 15px;
+    padding-top: 5px;
+    border-radius: 5px;
+  }
+  
+  .logo p{
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+  h4{
+    font-size: 1rem;
+    color:var(--black)
+  }
+
+  h4 small{
+    font-size: 1rem;
+    color: var(--grey);
+  }
+
+  h4 small span{
+    font-size: 1.1rem;
+    color: var(--black);
+  }
+  p{
+    font-size: 1rem;
+    color: var(--grey);
+  }
+  p span{
+    font-size: 1.3rem;
+    color: var(--black);
+  }
+
+  .date{
+    text-align: right;
+  }
+
+  .d-header{
+    width: 100%;
+    padding: 8px;
+    background-color: var(--darkgreen);
+    text-align: center;
+    margin: 10px 0 0 0;
+    
+  }
+
+  textarea{
+    margin-top: 10px;
+    
+  }
+
+  textarea[id="comment"]{
+    border: 2px solid var(--black);
+  }
+
+  .btn{
+    background-color: var(--darkgreen);
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .btn:hover{
+    background-color:green;
+    color: var(--white);
+  }
+
+  @media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+  }
+}
+</style>
+{% endblock style %}
+
+{% block body %}
+  <div class="container wrapper">
+    <div class="row">
+      <div class="col-6">
+        <div class="logo">
+          <img src="https://cdn.pixabay.com/photo/2016/10/18/05/52/android-logo-1749407_640.png" style="width: 50px; height: 50px;" />
+          <p class="navbar-brand heading">HMS</p>
+        </div>
+      </div>
+      <div class="col-6">
+        <h4>{{data.doctor}}</h4>
+        <h4><small>Speciality</small></h4>
+        <h4><small>Mb: <span>0XXXXXXXXX</span></small></h4>
+      </div>
+      <div class="col-12">
+        <p>Patient ID: <span>{{data.appointment_id}}</span></p>
+      </div>
+      <div class="col-12">
+        <p>Patient Name: <span>{{data.appointment_ref.name}}</span></p>
+      </div>
+      <div class="col-12">
+        <p>Gender: <span>Male</span></p>
+      </div>
+      <div class="col-12">
+        <p>Age: <span>20</span></p>
+      </div>
+      <div class="col-12 date"><p>Date: <span>{{data.date}}</span></p></div>
+    </div>
+    <hr>
+    <form action="{% url 'patient' %}" method="post">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-sm-12">
+        <input type="text" class="form-control" value="{{data.appointment_id}} " name="appointment_id">
+        </div>
+
+        <div class="col">
+          <h4 class="d-header"><b>Symptoms</b></h4>
+          <textarea class="form-control" rows="5" id="comment" placeholder="Click to add." name="symptoms"></textarea>
+          <h4 class="d-header"><b>Tests</b></h4>
+          <textarea class="form-control" rows="5" id="comment" placeholder="Click to add." name="test"></textarea>
+          <h4 class="d-header"><b>Advice</b></h4>
+          <textarea class="form-control" rows="5" id="comment" placeholder="Click to add." name="advice"></textarea>
+        </div>
+        <div class="col" style="border-left: 2px solid var(--grey);">
+          <span style="font-size: 3em;">R<sub>x</sub></span>
+          <hr>
+          <textarea class="form-control" rows="5" id="comment" placeholder="Click to add." name="text"></textarea>
+        </div>
+        <hr style="margin-top: 5px;">
+        <div class="col-sm-12 d-flex justify-content-center">
+            <button type="submit" class="btn btn-success">Submit</button></div>
+    </form>
+  </div>
+  {% endblock body %}

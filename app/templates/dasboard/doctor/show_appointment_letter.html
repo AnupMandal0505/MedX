@@ -1,0 +1,151 @@
+{% extends 'dasboard/base.html' %}
+{% load static %}
+{% block style %}
+<style>
+  :root {
+    --black: #000;
+    --darkgreen: #2822a9;
+    --green: #467b2e;
+    --white: #fff;
+    --grey: rgb(135, 126, 126);
+  }
+
+
+  {% comment %} .container{
+
+  } {% endcomment %}
+  {% comment %} .wrapper{
+    width: 100%;
+    background-color: var(--white);
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 5px;
+  } {% endcomment %}
+  
+  .wrapper .header {
+    padding: 15px 15px 0px 15px;
+  }
+
+  .wrapper .logo li{
+   display: inline;
+  }
+
+  .wrapper form .row {
+    padding: 15px 15px 0px 15px;
+  }
+
+  .wrapper ul {
+    list-style: none;
+  }
+
+  .wrapper ul li {
+    font-size: 1.2rem;
+    color: black;
+    margin-top: 10px;
+  }
+
+  .wrapper ul li span {
+    font-size: 1.1rem;
+    color: rgb(97, 92, 92);
+    font-family: bold;
+    border-bottom: 1px dotted black;
+    letter-spacing: 5px;
+
+  }
+
+  .wrapper ul .date {
+    float: right;
+  }
+
+  .wrapper .doctor li {
+    font-family: bold;
+  }
+
+  .btn{
+    background-color: var(--darkgreen);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--white);
+  }
+  .btn:hover{
+    background-color:green;
+    color: var(--white);
+  }
+
+  {% comment %} @media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 90%;
+  }
+  } {% endcomment %}
+</style>
+
+{% endblock style %}
+{% block body %}
+<div class="container-fluid mt-3  ">
+    <h2>Appointment Letter</h2>
+    
+    <div class="card wrapper" id="generate_pdf">
+      <div class="row header">
+      <div class="col-md-6">
+        <ul class="logo">
+          <li><img src="{% static 'home/image/favicon.png' %}" class="img-fluid" style="width: 7%;" />
+          </li>
+          <li>MedX</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 doctor">
+        <ul>
+          <li>Doctor Name : <span> {{data.doctor}}</span></li>
+          <li>Speciality : <span> Dermatologist</span></li>
+        </ul>
+      </div>
+
+      <div class="col-12">
+        <ul>
+          <li>Appointment ID : <span>{{data.appointment_id}}</span></li>
+          <li>Patient Name : <span>{{data.patient_name}}</span></li>
+          <li>Age : <span>{{data.age}}</span></li>
+          <li>Gender : <span>{{data.gender}}</span></li>
+          <li>Weight : <span>{{data.weight}}</span></li>
+          <li class="date">Date : <span>{{data.date}}</span></li>
+        </ul>
+      </div>
+    </div>
+      <hr style="margin-top: 5px;">
+      
+    </div>
+    <div class="col-sm-12 d-flex justify-content-center">
+      <a href="/patient-form/{{data.appointment_id}}" class="btn ">View</a>
+      <button class="btn btn-info" id="printButton" onclick="print()">Download</button>
+
+      </div>
+  </div>
+{% endblock body %}
+
+
+{% comment %} pdf generate {% endcomment %}
+{% block js %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js "></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script type="text/javascript">
+  window.jsPDF = window.jspdf.jsPDF;
+  var docPDF = new jsPDF();
+  function print() {
+    var elementHTML = document.querySelector("#generate_pdf");
+
+    docPDF.html(elementHTML, {
+      callback: function (docPDF) {
+        docPDF.save('{{data.appointment_id}}');
+      },
+      x: 5,
+      y: 5,
+      width: 200,
+      windowWidth: 850
+    });
+  }
+</script>
+{% endblock js %}

@@ -1,0 +1,184 @@
+
+.diagnosis-upload-image{
+    position: relative;
+    /* max-width: 900px; */
+    width: 100%;
+    border-radius: 6px;
+    background-color: white;
+    align-items: center;
+}
+
+.diagnosis-upload-image .card{
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    width: 96%;
+}
+
+.diagnosis-upload-image .input-group{
+    margin: 60px 0 0 40px;
+    border-radius: 90px;
+    width: 86%;
+}
+
+.diagnosis-upload-image .form-control{
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    min-width: 0;
+}
+
+.tag_line1{
+    margin: -15px 0 0 5px;
+    color: red;
+    font-size: 16px;
+}
+
+.tag_line1:hover{
+    cursor:pointer;
+    color: rgb(91, 152, 91);
+}
+
+.diagnosis-upload-image .tag_line{
+    margin-left: 44px;
+    color: red;
+    font-size: 14px;
+}
+
+.diagnosis-upload-image h2{
+    position: relative;
+    font-size: 25px;
+    font-weight: bolder;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.diagnosis-upload-image h2::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 20%;
+    border-radius: 10px;
+    background-color: #4070f4;
+}
+
+.diagnosis-upload-image form{
+    position: relative;
+    margin-top: 16px;
+    min-height: 490px;
+    background-color: white;
+    overflow: hidden
+}
+
+.diagnosis-upload-image form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 150px;
+    width: 100%;
+    margin: 30px 0 0 40%;
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: #213e8d;
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+
+.diagnosis-upload-image .nextBtn .btnText{
+    font-size: 20px;
+}
+
+form button:hover{
+    background-color: #265df2;
+}
+
+
+#display_image1{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+    object-fit: none;
+
+
+}
+
+#display_image2{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image3{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image4{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+#display_image5{
+    margin: 7px 80px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+    background-position: cover;
+    background-size: cover;
+}
+
+
+@media(max-width: 769px) {
+    #display_image1{
+        display: none;
+    }
+    #display_image2{
+        display: none;
+    }
+    #display_image3{
+        display: none;
+    }
+    #display_image4{
+        display: none;
+    }
+    #display_image5{
+        display: none;
+    }
+    .diagnosis-upload-image form{
+        padding-right: 10px;
+    }
+    .diagnosis-upload-image .tag_line1{
+        font-size: 14px;
+    }
+
+    .diagnosis-upload-image .tag_line{
+        font-size: 13px;
+    }
+}
