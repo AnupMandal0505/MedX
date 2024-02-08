@@ -58,4 +58,4 @@ class Appointment(models.Model):
                          unique=True,null=True,default=None)
 
     def __str__(self):
-        return self.appointment_id
+        return str(self.appointment_id)

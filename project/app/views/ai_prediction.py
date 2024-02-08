@@ -32,7 +32,7 @@ def prediction(request):
 
         
         # Load in a model and evaluate it
-        loaded_model_1 = tf.keras.models.load_model("C:/Users/SHREYAN/Desktop/Hack/project/app/ML/saved_efficientnet")
+        loaded_model_1 = tf.keras.models.load_model("D:/Django/Hack/project/app/ML/saved_efficientnet")
 
         # Create a function to import an image and resize it to be able to be used with our model
         def load_and_prep_image(filename, img_shape=[224, 224]):

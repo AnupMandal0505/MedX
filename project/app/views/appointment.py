@@ -52,7 +52,7 @@ def appointment(request,slug):
     #         'doctor_data' :"Data Not Found"
     #     }
 
-    doctor_data = User.objects.get(phone = slug)
+    doctor_data = User.object.get(phone = slug)
 
     context={
         'doctor_data':doctor_data,

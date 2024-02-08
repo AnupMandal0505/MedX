@@ -12,7 +12,7 @@ def signin(request):
         phone=request.POST['phone']
         password=request.POST['password']
         try:
-            users=User.objects.get(phone=phone)  
+            users=User.object.get(phone=phone)  
             if users.delete == False:
                 user = authenticate(request, phone=phone, password=password)
                 if user is not None:

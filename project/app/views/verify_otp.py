@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from app.models import User,Appointment,Patient
 import random
 from django.contrib.auth.hashers import make_password
+from django.http import JsonResponse, HttpResponse
 
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail,EmailMultiAlternatives
@@ -9,35 +10,20 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 from django.views.decorators.csrf import csrf_exempt
 
 from django.contrib import messages
-from django.template.loader import render_to_string
-from django.http import JsonResponse, HttpResponse
 
 
+def mail(user_name,Password,email):
 
-
-def mail_Update_Password(first_name,password,email):
-    try:
-        subject = 'Password update successful'
-        from_email = 'mastikipathshala828109@gmail.com'
-
-        # Correct template_path and render the HTML template with the provided data
-        template_path = r'mail_templates\Password_Update_Successful.html'
-        pin=random.randint(9999,99999)
-        context = {
-                    'first_name': first_name,
-                'password':password,
-                }
-        message = render_to_string(template_path, context)
-
-        to = email
-
-        msg = EmailMultiAlternatives(subject, '', from_email, [to])
-        msg.attach_alternative(message, 'text/html')
-        msg.send()
-        return pin
-    except Exception as e:
-            print("smg errr:",e)
-            raise Exception("Prob")
+    User_name=user_name
+    Password=Password
+    subject='Password update successful'
+    form_email='mastikipathshala828109@gmail.com'
+    msg=(f'<p>Hii, <b>{User_name}</b><br>Password Update Successful <br>Password : {Password}<b></b> </p>')
+    # to='anupmandal828109@gmail.com'
+    to=email
+    msg=EmailMultiAlternatives(subject,msg,form_email,[to])
+    msg.content_subtype='html'
+    msg.send()
 
 
 
@@ -47,16 +33,33 @@ def VerifyPasswordOtp(request):
     if request.method == 'POST':
         phone=request.POST['phone']
         row_password=request.POST['password']
+        
         password=make_password(row_password)
 
-        try:
-            user=User.objects.get(phone=phone) 
-            user.password=password
-            user.status=1
-            user.save()
-            mail_Update_Password(user.first_name,row_password,user.email)
-            # Return success response
-            return JsonResponse({'success': True, 'message': 'Password Updated successfully'})
-        except Exception as e:
-            # Return error response
-            return JsonResponse({'success': False, 'message': str(e)})
+        user=User.object.get(phone=phone) 
+        user.password=password
+        user.status=1
+        user.save()
+        mail(user.first_name,row_password,user.email)
+
+        data = True  # Set this to True or False based on your verification logic
+        response_data = {'data_saved': data}
+        return JsonResponse(response_data)
+   
+
+
+# @csrf_exempt
+# def VerifyEmailOtp(request):
+
+#     if request.method == 'POST':
+#         phone=request.POST['phone']
+#         row_password=request.POST['password']
+#         password=make_password(row_password)
+
+#         user=User.object.get(phone=phone) 
+#         user.password=password
+#         user.status=1
+#         user.save()
+#         mail(user.name,row_password,user.email)
+
+#     return render(request,'home/index.html')

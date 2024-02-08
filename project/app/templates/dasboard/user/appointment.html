@@ -240,14 +240,15 @@
   
   // Get the current date
   const currentDate = new Date();
+  
 
-  if (userDate <= currentDate) {
+  if (userDate < currentDate){
     alert("Select Valid Date.");
     document.getElementById("userDate").value = "";
-  } 
-
-
+  }
 });
+
+
 </script>
 
 

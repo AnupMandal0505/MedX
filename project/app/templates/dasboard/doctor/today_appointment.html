@@ -28,10 +28,10 @@
             <tr>
                 <td>{{i.appointment_id}}</td>
                 <td>{{i.appointment_ref.first_name}}</td>
-                <td>{% if i.consultation == "online" and i.status == False and i.meet_link == "none" %} <a href="send_meet_link/{{i.appointment_id}}" class="btn btn-success">Send Link</a> {% elif i.consultation == "online" and i.status == False %} <a href="{{i.meet_link}}" class="btn btn-success" target="blank" >Join Meet</a>{% endif %}</td>
+                <td>{% if i.consultation == "online" and i.status == False and i.meet_link == "none" %} <a href="send_meet_link/{{i.appointment_id}}" class="btn btn-success">Send Link</a> {% elif i.consultation == "online" and i.status == False %} <a href="{{i.meet_link}}" class="btn btn-success" target="blank" >Join Meet</a> {% else %}OFFLINE{% endif %}</td>
                 <td>{{i.slot_time}}</td>
                 <td>{{i.doctor}}</td>
-                <td>{% if i.consultation == "online" and i.status == False and i.meet_link != "none" %} <a href="show_appointment/{{i.appointment_id}}" class="btn btn-success">View</a>{% endif %}</td>   
+                <td>{% if i.consultation == "online" and i.status == False and i.meet_link != "none" %} <a href="show_appointment/{{i.appointment_id}}" class="btn btn-success">View</a>{% elif i.consultation == "online" and i.status == False and i.meet_link == "none"  %} meet link {% else %} <a href="show_appointment/{{i.appointment_id}}" class="btn btn-success">View</a>  {% endif %}</td>   
 
                 {% comment %} <td><a href="show_appointment/{{i.appointment_id}}" class="btn btn-success">View</a></td> {% endcomment %}
             </tr>
