@@ -82,12 +82,13 @@ def mailOTP(name,otp,email):
         context = {'name': name,
                 'otp':otp,
                 }
-        message = render_to_string('dasboard/mail_templates/otp_verify.html', context)
+        
+        # message = render_to_string(template_path, context)
 
         to = email
 
         msg = EmailMultiAlternatives(subject, '', from_email, [to])
-        msg.attach_alternative(message, 'text/html')
+        # msg.attach_alternative(message, 'text/html')
         msg.send()
         return pin
     except Exception as e:
