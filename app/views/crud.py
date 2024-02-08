@@ -112,25 +112,25 @@ def profile(request):
 @login_required(login_url='signin')
 def edit_profile(request):
    
-    if request.method == 'POST':
-        email=request.POST['email']
-        city=request.POST['city']
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
+    # if request.method == 'POST':
+    #     email=request.POST['email']
+    #     city=request.POST['city']
+    #     first_name=request.POST['first_name']
+    #     last_name=request.POST['last_name']
 
-        us=request.user
-        us.first_name=first_name
-        us.last_name=last_name
-        us.email=email
-        us.city = city
-        try:
-            profile=request.FILES['profile']
-            us.profile=profile
-        except:
-            pass
+    #     us=request.user
+    #     us.first_name=first_name
+    #     us.last_name=last_name
+    #     us.email=email
+    #     us.city = city
+    #     try:
+    #         profile=request.FILES['profile']
+    #         us.profile=profile
+    #     except:
+    #         pass
         
-        us.save()
-        return redirect('dasboard')
-    else:
+    #     us.save()
+    #     return redirect('dasboard')
+    # else:
 
-        return render(request,'dasboard/update_profile/edit_profile.html')
+    return render(request,'dasboard/update_profile/edit_profile.html')
