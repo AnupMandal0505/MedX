@@ -82,7 +82,7 @@ def mailOTP(name,otp,email):
         context = {'name': name,
                 'otp':otp,
                 }
-        message = render_to_string(template_path, context)
+        message = render_to_string('dasboard/mail_templates/otp_verify.html', context)
 
         to = email
 
