@@ -31,9 +31,9 @@ SECRET_KEY = 'django-insecure-01ze@3+%gd%7vc3duqh&dssh*jji^m29%m!!gi-tpsz7pyqh$v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# ALLOWED_HOSTS = ['MedX.onrender.com/']
+ALLOWED_HOSTS = ['medx-z7bs.onrender.com']
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 # Application definition
 
