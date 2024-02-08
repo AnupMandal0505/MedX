@@ -5,8 +5,8 @@ MedX is a web application where you can come with your Dematological conditions 
 ![](https://github.com/MedX23/MedX/blob/ed4c0941603a26461e5ca88e45dbd7b55a02bbc4/Contributions/README_img/Landing.png)
 
 ## 🔗 App Link
-[CLICK ME](https://medx-z7bs.onrender.com/)
-The live site is not yet deployed, we are working towards it .
+The live site is now deployed! You can access it [here](https://medx-z7bs.onrender.com/).
+
 
 ## Features
 
