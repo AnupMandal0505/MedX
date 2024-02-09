@@ -50,7 +50,7 @@ def mail_User_Info(first_name,last_name,phone,password,email):
         from_email = 'mastikipathshala828109@gmail.com'
 
         # Correct template_path and render the HTML template with the provided data
-        template_path = r'mail_templates\after_register_info.html'
+        template_path = 'mail_templates/after_register_info.html'
         pin=random.randint(9999,99999)
         context = {
                     'first_name': first_name,
@@ -77,7 +77,7 @@ def mailOTP(name,otp,email):
         from_email = 'mastikipathshala828109@gmail.com'
 
         # Correct template_path and render the HTML template with the provided data
-        template_path = 'dasboard/mail_templates/otp_verify.html'
+        template_path = 'mail_templates/otp_verify.html'
         pin=random.randint(9999,99999)
         context = {'name': name,
                 'otp':otp,

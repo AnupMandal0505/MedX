@@ -21,7 +21,7 @@ def mail_Update_Password(first_name,password,email):
         from_email = 'mastikipathshala828109@gmail.com'
 
         # Correct template_path and render the HTML template with the provided data
-        template_path = r'mail_templates\Password_Update_Successful.html'
+        template_path = 'mail_templates/Password_Update_Successful.html'
         pin=random.randint(9999,99999)
         context = {
                     'first_name': first_name,
