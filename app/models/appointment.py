@@ -36,7 +36,7 @@ CONSULTAION_CHOICE = (
 
 class Appointment(models.Model):
     appointment_ref = models.ForeignKey(User, on_delete=models.CASCADE)
-    appointment_id=models.CharField(max_length=25,unique=True)
+    appointment_id=models.CharField(max_length=25,primary_key=True,null=False)
     patient_name = models.CharField(max_length=255, blank=True)
     contact = models.CharField(max_length=13, blank=True)
     age = models.IntegerField()
@@ -47,15 +47,15 @@ class Appointment(models.Model):
     blood_group = models.CharField(max_length = 20,choices = BLOOD_GROUP,default = 'Male')
     gender = models.CharField(max_length = 20,choices = GENDER,default = '1')
     meet_link = models.CharField(max_length=255, blank=True,default="none")
-    predicted_file = models.FileField(upload_to='predicted_diagnosis/',max_length=250,blank=True,default=None)
+    predicted_file = models.URLField(blank=True)
     symptoms = models.TextField()
     appointment_ref = models.ForeignKey(User, on_delete=models.CASCADE)
     doctor = models.CharField(max_length=255, blank=True)
     status = models.BooleanField(default=False)
     consultation=models.CharField(max_length = 20,choices = CONSULTAION_CHOICE,default = 'offline')
 
-    appointment_id_slug=AutoSlugField(populate_from='appointment_id',
-                         unique=True,null=True,default=None)
+    # appointment_id_slug=AutoSlugField(populate_from='appointment_id',
+    #                      unique=True,null=True,default=None)
 
     def __str__(self):
         return self.appointment_id

@@ -21,7 +21,7 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Payment)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['payment_ref','order_id', 'payment_id', 'amount', 'date','status']
+    list_display = ['payment_ref', 'payment_id', 'amount', 'date','status']
 
 @admin.register(Department)
 class UserAdmin(admin.ModelAdmin):

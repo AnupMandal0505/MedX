@@ -30,20 +30,6 @@ from django.template.loader import render_to_string
 
 
     
-
-
-
-# def mailOTP(name,otp,email):
-#     name=name
-#     otp=otp
-#     subject='Verify OTP'
-#     form_email='mastikipathshala828109@gmail.com'
-#     msg=(f'<p>welcome HMS <br>Hii,<b>{name}</b> <br>otp : {otp}<b></b> </p>')
-#     to=email
-#     msg=EmailMultiAlternatives(subject,msg,form_email,[to])
-#     msg.content_subtype='html'
-#     msg.send()
-
 def mail_User_Info(first_name,last_name,phone,password,email):
     try:
         subject = 'Account Verification'
@@ -94,16 +80,6 @@ def mailOTP(name,otp,email):
     except Exception as e:
         print("smg errr:",e)
         raise Exception("Prob")
-# Unique Id........................................
-# def user_unique_number(name):
-#     name=name
-#     while(True):  
-#         uq=random.randint(1000,9999)
-#         uq=name+str(uq)
-#         try:
-#             n=User.object.get(phone=uq)
-#         except:
-#             return uq
 
 def dept_unique_number(name):
     name=name

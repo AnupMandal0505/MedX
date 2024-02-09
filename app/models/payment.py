@@ -6,7 +6,7 @@ from .user import User
 class Payment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE) 
     payment_ref = models.OneToOneField(Patient,on_delete=models.CASCADE) 
-    order_id = models.CharField(max_length=50,blank=True,null=True,unique=True) 
+    order_id = models.CharField(max_length=50,primary_key=True,null=False) 
     payment_id = models.CharField(max_length=50,blank=True,null=True,unique=True)
     payment_mode = models.CharField(max_length=50,blank=True,null=True)
     amount = models.IntegerField(blank=True,null=True)

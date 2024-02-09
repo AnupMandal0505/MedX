@@ -37,41 +37,6 @@ def mail_Forget_Password(first_name,email,otp):
             raise Exception("Prob")
 
 
-# def update_password(request):
-    
-#     if request.method == 'POST':
-#         phone=request.POST['phone']
-#         password=request.POST['password']
-#         # password=make_password(row_password)
-       
-#         try:
-           
-#             user=User.object.get(phone=phone) 
-#             otp=random.randint(1000,9999)
-#             mail(user.first_name,user.email,otp)
-            
-#             context={
-#                 'otp':otp,
-#                 'phone':phone,
-#                 'password':password
-
-#             }
-
-#             messages.info(request, "Otp Sent Your Email Id Please Check.")
-#             print(87879)
-#             return render(request,'home/signin.html',context)
-
-#             # return redirect("dasboard")
-        
-#         except:
-
-#             messages.info(request, "Incorrect Phone Number .")
-#             redirect('update_password')
-    
-#     return render(request,'dasboard/update_profile/update_password.html')
-
-
-
 
 
 def update_password(request):
@@ -126,7 +91,13 @@ def edit_profile(request):
         us.city = city
         try:
             profile=request.FILES['profile']
-            us.profile=profile
+            # Upload image to Cloudinary
+            result = cloudinary.uploader.upload(profile, folder='MedX')
+            # print("Cloudinary Result:",str(result))
+            # Get the public ID of the uploaded image from Cloudinary
+            # cloudinary_public_id = result['public_id']
+            url_cloudinary=result['url']
+            us.profile=url_cloudinary
         except:
             pass
         

@@ -4,7 +4,7 @@ from autoslug import AutoSlugField
 
 class Patient(models.Model):
     patient_ref = models.OneToOneField(Appointment, on_delete=models.CASCADE)
-    patient_id=models.CharField(max_length=25,unique=True)
+    patient_id=models.CharField(max_length=25,primary_key=True,null=False)
     symptoms = models.TextField(default="NULL")
     suggestion_test = models.TextField(default="NULL")
     advice = models.TextField(default="NULL")

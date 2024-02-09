@@ -11,17 +11,17 @@ from autoslug import AutoSlugField
 # Create your models here.
 
 class User(AbstractBaseUser, PermissionsMixin):
-    phone = models.CharField(max_length=225,blank=True, default='', unique=True)
+    phone = models.CharField(max_length=225, primary_key=True,null=False)
     email = models.EmailField(blank=True, default='', unique=True)
     first_name = models.CharField(max_length=225, blank=True, default='')
     last_name = models.CharField(max_length=225, blank=True, default='')
     city = models.CharField(max_length=255, blank=True)
     user_type = models.CharField(max_length=255, blank=True)
     status = models.IntegerField(default=0, blank=True)
-    profile = models.FileField(upload_to='profile/',max_length=250,blank=True,null=True,default=None)
+    profile = models.URLField(blank=True)
     delete = models.BooleanField(default=False)
-    phone_slug=AutoSlugField(populate_from='email',
-                         unique_with=['first_name', 'last_name'],null=True,default=None)
+    # phone_slug=AutoSlugField(populate_from='email',
+    #                      unique_with=['first_name', 'last_name'],null=True,default=None)
     
 
 

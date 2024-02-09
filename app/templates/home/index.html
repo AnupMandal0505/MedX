@@ -310,17 +310,23 @@ background-color: #555;
       to empower you with convenience and expert care.<br> Your
       skin deserves the best.<br> <b>We're here to deliver it!</b></p>
     </div>
-   <div  >
-      <a href="signup" class="justify-content-center btn-outline-secondary " style="margin-left: 35%; margin-right: 7%;"> Get Started </a>
-      <a href="common_diseases" class="justify-content-center btn-outline-secondary " >Some Diseases</a>
-    </div>
+   
+
+      <div class="row justify-content-center mt-5">
+        <div class="col-auto">
+          <a href="signup" class="btn btn-outline-secondary ">Get Started</a>
+        </div>
+        <div class="col-auto">
+          <a href="common_diseases" class="btn btn-outline-secondary ">Some Diseases</a>
+        </div>
+      </div>
   </div>
 </div>
 <br>
 <br>
 <button class="open-button" onclick="openForm()">Chat</button>
 
-<div class="chat-popup" id="myForm">
+{% comment %} <div class="chat-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
 
     <label for="msg"><b>Message</b></label>
@@ -329,7 +335,7 @@ background-color: #555;
     <button type="submit" class="btn">Send</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
-</div>
+</div> {% endcomment %}
 
 <script>
 function openForm() {
@@ -347,42 +353,6 @@ function closeForm() {
 <!-- Container end -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
-
-
-
-{% comment %} 
-<script>
-
-
-	$(document).ready(function () {
-
-		$('#signup-form').submit(function(event) {
-    	
-			fileName = document.querySelector('#file').value;
-			let filename = fileName.toLowerCase();
-      extension = filename.substring(filename.lastIndexOf('.') + 1);
-   
-  
-    if ('jpg' == extension || 'jpeg' == extension) {
-
-      $("#signup-form").submit();
-      return;
-    }
-	else{
-
-		event.preventDefault();
-		
-		$("#message").text("jpg not formate");
-		$("#message").addClass("text-danger");
-		// $("#signup-form").submit();
-		return;
-	}
-
- 
-})
-
-	});
-</script> {% endcomment %}
 
 
 

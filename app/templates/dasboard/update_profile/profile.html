@@ -20,7 +20,7 @@
     <h2>Profile</h2>
     <div class="card">
       <div class="card-body">
-        {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 150px; height: 150px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 150px; height: 150px;">{% endif %}
+        {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile}}" alt="" style="width: 150px; height: 150px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 150px; height: 150px;">{% endif %}
         {% comment %} <div class="row">
             <div class="col-md-4">
                 <h4>User ID:</h4><br>
