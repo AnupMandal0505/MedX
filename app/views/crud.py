@@ -8,7 +8,8 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 
 from django.contrib import messages
 from django.template.loader import render_to_string
-
+import cloudinary
+import cloudinary.uploader
 
 
 def mail_Forget_Password(first_name,email,otp):
