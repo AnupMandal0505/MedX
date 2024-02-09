@@ -17,7 +17,7 @@ def mail_Forget_Password(first_name,email,otp):
         from_email = 'mastikipathshala828109@gmail.com'
 
         # Correct template_path and render the HTML template with the provided data
-        template_path = r'mail_templates\otp_ForgetPassword.html'
+        template_path = 'mail_templates/otp_ForgetPassword.html'
         pin=random.randint(9999,99999)
         context = {
                     'first_name': first_name,
