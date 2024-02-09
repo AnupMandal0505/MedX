@@ -51,7 +51,6 @@ def mail_User_Info(first_name,last_name,phone,password,email):
         msg = EmailMultiAlternatives(subject, '', from_email, [to])
         msg.attach_alternative(message, 'text/html')
         msg.send()
-        return pin
     except Exception as e:
         print("smg errr:",e)
         raise Exception("Prob")
@@ -76,7 +75,6 @@ def mailOTP(name,otp,email):
         msg = EmailMultiAlternatives(subject, '', from_email, [to])
         msg.attach_alternative(message, 'text/html')
         msg.send()
-        return pin
     except Exception as e:
         print("smg errr:",e)
         raise Exception("Prob")

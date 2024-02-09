@@ -31,7 +31,6 @@ def mail_Forget_Password(first_name,email,otp):
         msg = EmailMultiAlternatives(subject, '', from_email, [to])
         msg.attach_alternative(message, 'text/html')
         msg.send()
-        return pin
     except Exception as e:
             print("smg errr:",e)
             raise Exception("Prob")
