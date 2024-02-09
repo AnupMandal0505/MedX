@@ -27,7 +27,7 @@
       {% for i in all_appointment %}
             <tr>
                 <td>{{i.appointment_id}}</td>
-                <td>{{i.patient_name}}</td>
+                <td>{{i.appointment_ref.first_name}}</td>
                 <td>{{i.date}}</td>
                 <td>{{i.slot_time}}</td>
                 <td>{{i.doctor}}</td>

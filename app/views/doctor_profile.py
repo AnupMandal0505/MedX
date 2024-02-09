@@ -22,7 +22,7 @@ def doctor_profile(request):
 def doc_prof(request):
   
     try:
-        doctor_data = User.object.filter(user_type = "doctor")
+        doctor_data = User.objects.filter(user_type = "doctor")
         context = {
             'doctor_data' :doctor_data
         }

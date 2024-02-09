@@ -5,6 +5,10 @@
 
 {% block style %}
 <style>
+    :root{
+  --green: #c9efb7;
+  --blue:#31b085;
+    }
   
   .section1 p{
     width: 57%; font-size: 1.06rem;
@@ -28,7 +32,7 @@
   }
 
   .section3 a{
-    background-color: var(--green);
+    background-color: var(--blue);
     color: white;
     text-decoration: none;
     border-radius: 8px;
@@ -37,7 +41,7 @@
   
 }
 .section3 a:hover{
-    background-color: rgba(125, 178, 101, 0.871);
+    background-color: grey ;
   
 }
 
@@ -59,29 +63,87 @@
   .section4 p{
     font-size: 1rem;    
   }
-  /*scroll btn*/
 
-.body_landing #myBtn {
-    display: none; /* Hidden by default */
-    position: fixed; /* Fixed/sticky position */
-    bottom: 20px; /* Place the button at the bottom of the page */
-    right: 30px; /* Place the button 30px from the right */
-    z-index: 99; /* Remove borders */
-    outline: none; /* Remove outline */
-    font-weight: bolder;
-    font-size: 25px; 
-    color: rgb(0, 0, 0); /* Text color */
-    cursor: pointer; /* Add a mouse pointer on hover */
-    border: 1px solid black;
-    border-radius: 30px; /* Rounded corners */
-    height: 50px;
-    width: 50px;
-    padding: 0px;
-    background-color: var(--green);
+
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+
+.open-button {
+  background-color: var(--blue);
+  padding: 7px 0px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  width: 7%;
+  position: fixed; 
+  z-index: 8;
+  outline: none; 
+  font-size: 18px; 
+  color: rgb(0, 0, 0); 
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 30px; 
 }
+.open-button:hover {
+background-color: #555;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  border: 1px solid #f1f1f1;
+  z-index: 9;
+
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: var(--blue);
+  color: white;
+  padding: 6px 8px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
   
-.body_landing #myBtn:hover {
-    background-color: #555; /* Add a dark-grey background on hover */
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 0.8;
 }
 
 @media (min-width: 320px) and (max-width: 422px) {
@@ -189,7 +251,6 @@
 </div>
 <br>
 
-
 <div class="container mt-5  section2">
   <div class="row">
     <div class="col-md-4 col-sm-12">
@@ -240,6 +301,7 @@
 <br>
 
 
+
 <div class="container mt-5  section3">
  
   <div class="row mt-5">
@@ -249,12 +311,35 @@
       skin deserves the best.<br> <b>We're here to deliver it!</b></p>
     </div>
    <div  >
-      <a href="signup" class="justify-content-center btn-outline-secondary " style="margin-left: 35%; margin-right: 5%;"> Get Started </a>
-      <a href="some_disease" class="justify-content-center btn-outline-secondary " > Some Diseases</a>
+      <a href="signup" class="justify-content-center btn-outline-secondary " style="margin-left: 35%; margin-right: 7%;"> Get Started </a>
+      <a href="common_diseases" class="justify-content-center btn-outline-secondary " >Some Diseases</a>
     </div>
   </div>
 </div>
 <br>
+<br>
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+  <form action="/action_page.php" class="form-container">
+
+    <label for="msg"><b>Message</b></label>
+    <textarea placeholder="Type message.." name="msg" required></textarea>
+
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
 
 
 

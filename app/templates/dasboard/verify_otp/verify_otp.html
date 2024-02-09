@@ -17,7 +17,7 @@
           <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 
             <!-- Use ajax data transfer -->
-          {% comment %} <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> {% endcomment %}
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 
 </head>
@@ -35,6 +35,8 @@
 }
 
 body {
+  margin: 0;
+  padding: 0;
   background: #000000; /* fallback for old browsers */
   background: var(--green);
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
@@ -50,12 +52,9 @@ body {
   align-items: center;
   justify-content: center;
 }
-form{
-  max-width: 20%;
-  background-color:white;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-left: 40%;
+.form{
+  
+  margin-left: 50%;
   margin-top: 15%;
 }
 
@@ -109,7 +108,8 @@ button:hover {
 
 
 
-  <div class="container" >
+
+  <div class="container form" >
     <div id="inputs" class="inputs" >
       <h2 style="text-align: center;">Enter OTP</h2>
         <input class="OTP1" type="text" 
@@ -125,11 +125,6 @@ button:hover {
   </div>
 </body>
 </html>
-
-
-            <!-- Use ajax data transfer -->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 <script>
 
@@ -169,6 +164,7 @@ inputs.addEventListener("keyup", function (e) {
 
 //check otp
 function otp_checker() {
+
   const generate_otp = "{{otp}}";
   
   const a = parseInt(generate_otp.slice(0,1));
@@ -190,49 +186,61 @@ function otp_checker() {
   const digit3 = parseInt(inputBox3.value);
   const digit4 = parseInt(inputBox4.value);
 
+
   if (a === digit1 && b === digit2 && c === digit3 && d === digit4) {
     $.ajax({
-        type: "POST",
-        url: '{% url "VerifyPasswordOtp" %}',
-        data: {
-            'phone': "{{phone}}",
-            'password': "{{password}}",
-        },
 
-        success: function (data) {
-          
-          if (data.data_saved === true) {
-            alert("OTP MATCHED!");
-            window.location.replace("/signin");
+      type: "POST",
+      url: '{% url "VerifyPasswordOtp" %}',
+      data: {  'phone': "{{phone}}",'password': "{{password}}"  },
+ 
+      success: function (data) {
+        {% comment %} console.log("data") {% endcomment %}
+        window.location.href = "/signin"
+      }
 
-          }
-          else{
-            alert("ERROR occured!");
-            window.location.replace("/update_password");
-          }
-        }
-    });
-  } 
-  else {
+      
+  });
+  } else {
     alert("OTP NOT MATCHED!");
-    window.location.replace("/update_password");
-    // Remove the following line, as window.location.replace is not used correctly
-    // window.location.replace = "/";
-  }
+    {% comment %} window.location.replace = "/" {% endcomment %}
+    window.location.href = "/"
+
+    }
 }
 
 </script>
-
-<script type="text/javascript">
-  setTimeout(function () {
-
-      // Closing the alert
-      $('#alert').alert('close');
-  }, 3000);
-</script> 
-
-
 </body>
 </html>
 
 
+
+
+<!-- <script>
+
+    $('#otp').change(function () {
+
+        let otp = $('#otp').val();
+
+        if (otp == '{{otp}}') {
+
+            $.ajax({
+
+                type: "POST",
+
+                url: '{% url "verifyuser" %}',
+
+                data: { 'user_id': "{{user_id}}",'first_name': "{{first_name}}",'last_name': "{{last_name}}",'email': "{{email}}",'phone': "{{phone}}", 'user_type': "{{user_type}}", 'password': "{{password}}" },
+
+                success: function (data) {
+
+                    window.location.href = "/update_password"
+                }
+
+            })
+
+        }
+
+    })
+
+</script>-->

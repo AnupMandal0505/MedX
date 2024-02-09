@@ -12,22 +12,11 @@ from django.core.mail import send_mail,EmailMultiAlternatives
 from django.contrib import messages
 
 from django.views.decorators.csrf import csrf_exempt
+from django.template.loader import render_to_string
 
 
 # Create your views here.
 
-<<<<<<< HEAD:project/app/views/register.py
-def mail(phone,password,email):
-    phone=phone
-    Password=password
-    subject='MedX'
-    form_email='mastikipathshala828109@gmail.com'
-    msg=(f'<p>welcome Medx <br>User Id : <b>{phone}</b> <br>Password : {Password}<b></b> </p>')
-    to=email
-    msg=EmailMultiAlternatives(subject,msg,form_email,[to])
-    msg.content_subtype='html'
-    msg.send()
-=======
 # def mail(phone,password,email):
 #     phone=phone
 #     Password=password
@@ -80,22 +69,13 @@ def mail_User_Info(first_name,last_name,phone,password,email):
     except Exception as e:
         print("smg errr:",e)
         raise Exception("Prob")
->>>>>>> 12e9ebe50a2140c0fc4d57b62d5425b8f8f40fa3:app/views/register.py
 
 
 def mailOTP(name,otp,email):
-    name=name
-    otp=otp
-    subject='Verify OTP'
-    form_email='mastikipathshala828109@gmail.com'
-    msg=(f'<p>welcome HMS <br>Hii,<b>{name}</b> <br>otp : {otp}<b></b> </p>')
-    to=email
-    msg=EmailMultiAlternatives(subject,msg,form_email,[to])
-    msg.content_subtype='html'
-    msg.send()
+    try:
+        subject = 'Account Verification'
+        from_email = 'mastikipathshala828109@gmail.com'
 
-<<<<<<< HEAD:project/app/views/register.py
-=======
         # Correct template_path and render the HTML template with the provided data
         template_path = 'dasboard/mail_templates/otp_verify.html'
         pin=random.randint(9999,99999)
@@ -103,18 +83,17 @@ def mailOTP(name,otp,email):
                 'otp':otp,
                 }
         
-        # message = render_to_string(template_path, context)
+        message = render_to_string(template_path, context)
 
         to = email
 
         msg = EmailMultiAlternatives(subject, '', from_email, [to])
-        # msg.attach_alternative(message, 'text/html')
+        msg.attach_alternative(message, 'text/html')
         msg.send()
         return pin
     except Exception as e:
         print("smg errr:",e)
         raise Exception("Prob")
->>>>>>> 12e9ebe50a2140c0fc4d57b62d5425b8f8f40fa3:app/views/register.py
 # Unique Id........................................
 # def user_unique_number(name):
 #     name=name
@@ -149,7 +128,7 @@ class register(View):
             
             
             try:
-                user=User.object.get(phone=phone)
+                user=User.objects.get(phone=phone)
                 messages.warning(request, 'Already Register !')
                 return redirect('signin')
             except:
@@ -159,9 +138,9 @@ class register(View):
                     if 'user' == user_type :
                         
                         password=phone
-                        mail(phone,password,email)
+                        mail_User_Info(first_name,last_name,phone,password,email)
                         password=make_password(password)
-                        ab = User.object.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,status=0)
+                        ab = User.objects.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,status=0)
                     
                         messages.success(request, f'{user_type} saved Successfully')
                         return redirect('dasboard')
@@ -174,9 +153,9 @@ class register(View):
                         signature=request.FILES['signature']
                         dept_id=dept_unique_number("dept")
                         password=phone
-                        mail(phone,password,email)
+                        mail_User_Info(first_name,last_name,phone,password,email)
                         password=make_password(password)
-                        ab = User.object.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,profile=profile,status=0)
+                        ab = User.objects.create(phone=phone,email=email, password=password, first_name=first_name,last_name=last_name,city=city, user_type=user_type,profile=profile,status=0)
                     
                         ba = Department.objects.create(dept_ref=ab,dept_id=dept_id,position=position,qualification=qualification,pan=pan,salary=salary,signature=signature)
                     
@@ -199,29 +178,43 @@ class register(View):
                     mailOTP(first_name,otp,email)
 
                     messages.info(request, "Otp Sent Your Email Id Please Check.")
-                    return render(request,'otp/verifyuser.html',context)
+                    return render(request,'home/verifyuser/verifyuser.html',context)
         
 
 
 
 
 
-@csrf_exempt
+# @csrf_exempt
+# def verify_user(request):
+#     if request.method == 'POST':
+#         phone=request.POST['phone']
+#         email=request.POST['email']
+#         first_name=request.POST['first_name']
+#         last_name=request.POST['last_name']
+#         user_type=request.POST['user_type']
+#         row_password=request.POST['password']
+#         password=make_password(row_password)
+#         ab = User.object.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password,user_type=user_type,status=1)
+#         mail(phone,row_password,email)    
+
+@csrf_exempt  
 def verify_user(request):
     if request.method == 'POST':
-        phone=request.POST['phone']
-        email=request.POST['email']
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
-        user_type=request.POST['user_type']
-        row_password=request.POST['password']
-        password=make_password(row_password)
-        
-        ab = User.object.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password,user_type=user_type,status=1)
-        mail(phone,row_password,email)    
-
-        data = True  # Set this to True or False based on your verification logic
-
-        response_data = {'data_saved': data}
-        return JsonResponse(response_data)
-        
+        phone = request.POST['phone']
+        email = request.POST['email']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        user_type = request.POST['user_type']
+        row_password = request.POST['password']
+        password = make_password(row_password)
+        try:
+            # Create the user
+            new_user = User.objects.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password, user_type=user_type, status=1)
+            # Send email
+            mail_User_Info(first_name,last_name,phone,row_password,email)            
+            # Return success response
+            return JsonResponse({'success': True, 'message': 'User created successfully'})
+        except Exception as e:
+            # Return error response
+            return JsonResponse({'success': False, 'message': str(e)})
