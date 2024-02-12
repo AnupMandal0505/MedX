@@ -239,34 +239,3 @@ function otp_checker() {
 </html>
 
 
-
-
-{% comment %} <script>
-
-    $('#otp').change(function () {
-
-        let otp = $('#otp').val();
-
-        if (otp == '{{otp}}') {
-
-            $.ajax({
-
-                type: "POST",
-
-                url: '{% url "verifyuser" %}',
-
-                data: { 'user_id': "{{user_id}}",'first_name': "{{first_name}}",'last_name': "{{last_name}}",'email': "{{email}}",'phone': "{{phone}}", 'user_type': "{{user_type}}", 'password': "{{password}}" },
-
-                success: function (data) {
-
-                    window.location.href = "/update_password"
-                }
-
-            })
-
-        }
-
-    })
-
-</script> {% endcomment %}
-
