@@ -591,7 +591,7 @@
                     {% comment %} Account {% endcomment %}
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 40px; height: 40px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 40px; height: 40px;">{% endif %}
+                            {% if request.user.profile %}<img class="rounded-circle me-lg-2" src="{{request.user.profile}}" alt="" style="width: 40px; height: 40px;"> {% else %} <img class="rounded-circle me-lg-2" src="{% static 'web_image/user.png' %}" alt="" style="width: 40px; height: 40px;">{% endif %}
 
                             {% comment %} <img class="rounded-circle me-lg-2" src="{{request.user.profile.url}}" alt="" style="width: 40px; height: 40px;"> {% endcomment %}
                             <span class="d-none d-lg-inline-flex">{{request.user.name}}</span>

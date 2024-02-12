@@ -5,6 +5,7 @@ import random
 from django.contrib.auth.decorators import login_required
 from django.core.mail import send_mail,EmailMultiAlternatives
 
+from urllib.parse import urlparse
 
 from django.contrib import messages
 from django.template.loader import render_to_string
@@ -88,18 +89,19 @@ def edit_profile(request):
         us.last_name=last_name
         us.email=email
         us.city = city
-        try:
-            profile=request.FILES['profile']
-            # Upload image to Cloudinary
-            result = cloudinary.uploader.upload(profile, folder='MedX')
-            # print("Cloudinary Result:",str(result))
-            # Get the public ID of the uploaded image from Cloudinary
-            # cloudinary_public_id = result['public_id']
-            url_cloudinary=result['url']
-            us.profile=url_cloudinary
-        except:
-            pass
-        
+
+        if 'profile' in request.FILES:
+            old_profile_url = us.profile
+            old_public_id = urlparse(old_profile_url).path.split('/')[-1].split('.')[0]
+            
+            cloudinary.uploader.destroy(old_public_id, invalidate=True)
+
+
+            profile = request.FILES['profile']
+            result = cloudinary.uploader.upload(profile, folder='MedX/profile')
+            url_cloudinary = result['url']
+            us.profile = url_cloudinary
+
         us.save()
         return redirect('dasboard')
     else:

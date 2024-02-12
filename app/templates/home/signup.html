@@ -307,7 +307,7 @@ span{
     
     <!--submit-->
     <div class="clearfix">
-      <button type="button" class="cancelbtn">Cancel</button>
+      <button onclick="myFunction()" class="cancelbtn">Cancel</button>
       <button type="submit" class="signupbtn " onclick="printmsg(),passwordConfirmation(),phonenumber(document.form1.phn)" >SignUp</button>
     </div>
   </div>
@@ -485,6 +485,12 @@ function phonenumber(inputtxt)
       $('#alert').alert('close');
   }, 3000);
 </script> 
+
+<script>
+  function myFunction() {
+    location.replace("/")
+  }
+  </script>
 </body>
 </html>
 
