@@ -14,13 +14,3 @@ def user_prescription(request,slug):
     }
     return render(request,'dasboard/user/prescription.html',context)
 
-
-
-# #read Write............................................
-# @login_required(login_url='signin')
-# def doctor_prescription(request,slug):
-#     # data = Patient.objects.get(patient_ref=slug)
-#     context = {
-#         'data':'data',
-#     }
-#     return render(request,'dasboard/user/prescription.html',context)

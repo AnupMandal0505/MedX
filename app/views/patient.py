@@ -69,37 +69,3 @@ def patient_form(request,slug):
         }
         return render(request,'dasboard/doctor/patient-form.html',context)
 
-    
-    # return render(request,'dasboard/doctor/patient-form.html')
-
-
-
-# @login_required(login_url='signin')
-# def patient(request, appointment_id):
-#     if request.method == 'POST':
-#         symptoms=request.POST['symptoms']
-#         suggestion_test=request.POST['test']
-#         advice=request.POST['advice']
-#         rx=request.POST['rx']
-    
-        
-        
-#         id=Appointment.objects.get(appointment_id=appointment_id)
-    
-#         try:
-#             data = Patient.objects.get(patient_ref=id)
-#             messages.success(request, 'Already Exist')
-#             return redirect('dasboard')
-
-#         except:
-#             user=id.appointment_ref
-#             id.status=True
-#             id.save()
-#             patient_id=patient_unique_number("pat")
-#             ab=Patient.objects.create(patient_ref=id,patient_id=patient_id,symptoms=symptoms,suggestion_test=suggestion_test,advice=advice,rx=rx)
-#             b=Payment.objects.create(user=user,payment_ref=ab,amount=500)
-#             messages.success(request, 'Saved Successfully')
-#             return redirect('dasboard')
-        
-#     return render(request,'dasboard/doctor/patient.html')
-

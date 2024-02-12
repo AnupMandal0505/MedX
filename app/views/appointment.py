@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from app.models import Appointment,User
 import random
+import cloudinary
+import cloudinary.uploader
 
 from django.contrib.auth.decorators import login_required
 
@@ -35,10 +37,13 @@ def appointment(request,slug):
         appointment_id=appointment_unique_number("appoint")
 
 
-        try:
-            predicted_file=request.FILES['predicted_file']
-            df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,symptoms=symptoms,consultation=consultation,predicted_file=predicted_file)        
-        except:
+        if 'predicted_file' in request.FILES:
+          
+            predicted_file = request.FILES['predicted_file']
+            result = cloudinary.uploader.upload(predicted_file, folder='MedX/predicted_file')
+            url_cloudinary = result['url']
+            df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,symptoms=symptoms,consultation=consultation,predicted_file=url_cloudinary)        
+        else:
             df=Appointment.objects.create(appointment_ref=appointment_ref,appointment_id=appointment_id,date=date,slot_time=time,patient_name=patient_name,contact=contact,relation=relation,age=age,weight=weight,blood_group=blood_group,gender=gender,doctor=doctor_name,consultation=consultation,symptoms=symptoms)        
 
         return redirect('dasboard')

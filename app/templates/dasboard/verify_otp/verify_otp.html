@@ -112,17 +112,15 @@
 
 
   {% if messages %}
+   
+    {% for message in messages %}
+        
+      <div id="alert" class="alert {% if message.tags == "success" %} alert-success {% elif message.tags == "warning" %} alert-danger{% else %} alert-info{% endif %} alert-dismissible fade show" id="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>{{ message }}</strong>  </div>
 
-  {% for message in messages %}
-
-  <div id="alert" class="alert {% if message.tags == " success" %} alert-success {% elif message.tags=="warning" %}
-    alert-danger{% else %} alert-info{% endif %} alert-dismissible fade show" id="alert">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong>{{ message }}</strong>
-  </div>
-
-  {% endfor %}
-
+    {% endfor %}
+  
   {% endif %}
 
 
@@ -229,6 +227,14 @@
   }
 
 </script>
+
+<script type="text/javascript">
+  setTimeout(function () {
+
+      // Closing the alert
+      $('#alert').alert('close');
+  }, 3000);
+</script> 
 </body>
 
 </html>

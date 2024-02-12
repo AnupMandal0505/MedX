@@ -13,22 +13,8 @@ from django.contrib import messages
 
 from django.views.decorators.csrf import csrf_exempt
 from django.template.loader import render_to_string
-
-
-# Create your views here.
-
-# def mail(phone,password,email):
-#     phone=phone
-#     Password=password
-#     subject='MedX'
-#     form_email='mastikipathshala828109@gmail.com'
-#     msg=(f'<p>welcome Medx <br>User Id : <b>{phone}</b> <br>Password : {Password}<b></b> </p>')
-#     to=email
-#     msg=EmailMultiAlternatives(subject,msg,form_email,[to])
-#     msg.content_subtype='html'
-#     msg.send()
-
-
+import cloudinary
+import cloudinary.uploader
     
 def mail_User_Info(first_name,last_name,phone,password,email):
     try:
@@ -123,8 +109,17 @@ class register(View):
                         qualification=request.POST['qualification']
                         pan=request.POST['pan']
                         salary=request.POST['salary']
+
                         profile=request.FILES['profile']
+                        result_profile = cloudinary.uploader.upload(profile, folder='MedX/profile')
+                        profile_url_cloudinary = result_profile['url']
+                        profile = profile_url_cloudinary
+
                         signature=request.FILES['signature']
+                        result_signature = cloudinary.uploader.upload(profile, folder='MedX/profile')
+                        signature_url_cloudinary = result_signature['url']
+                        signature = signature_url_cloudinary
+
                         dept_id=dept_unique_number("dept")
                         password=phone
                         mail_User_Info(first_name,last_name,phone,password,email)
@@ -154,23 +149,6 @@ class register(View):
                     messages.info(request, "Otp Sent Your Email Id Please Check.")
                     return render(request,'home/verifyuser/verifyuser.html',context)
         
-
-
-
-
-
-# @csrf_exempt
-# def verify_user(request):
-#     if request.method == 'POST':
-#         phone=request.POST['phone']
-#         email=request.POST['email']
-#         first_name=request.POST['first_name']
-#         last_name=request.POST['last_name']
-#         user_type=request.POST['user_type']
-#         row_password=request.POST['password']
-#         password=make_password(row_password)
-#         ab = User.object.create(phone=phone, first_name=first_name, last_name=last_name, email=email, password=password,user_type=user_type,status=1)
-#         mail(phone,row_password,email)    
 
 @csrf_exempt  
 def verify_user(request):
