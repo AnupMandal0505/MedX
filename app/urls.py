@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import ai_prediction,contact_us,about_us, term_and_condition,our_product,appointment_letter,doctor_profile, home,register,verify_otp,login,dasboard,appointment,send_meet_link, user_history,show_appointment,prescription,patient,payment,crud,check_diagnosis
+from .views import ai_prediction,contact_us,about_us, term_and_condition,our_product,appointment_letter,doctor_profile, home,register,verify_otp,login,dasboard,appointment,send_meet_link, user_history,show_appointment,prescription,patient,payment,crud,check_diagnosis,common_diseases
 
 urlpatterns = [
     path("",home.home,name = "home"),
@@ -61,6 +61,7 @@ urlpatterns = [
 
     path("prediction",ai_prediction.prediction,name = "prediction"),
     path("our_product",our_product.our_product,name = "our_product"),
+    path("common_diseases",common_diseases.common_diseases,name = "common_diseases"),
 
 
 ]

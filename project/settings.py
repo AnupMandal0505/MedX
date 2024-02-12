@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-01ze@3+%gd%7vc3duqh&dssh*jji^m29%m!!gi-tpsz7pyqh$v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['medx-z7bs.onrender.com']
+ALLOWED_HOSTS = ['medx-z7bs.onrender.com', '127.0.0.1']
 
 # ALLOWED_HOSTS = []
 
@@ -140,8 +140,8 @@ STATIC_ROOT = BASE_DIR / 'collectstatic'
 # smtp email send
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mastikipathshala828109@gmail.com'
-EMAIL_HOST_PASSWORD = 'rbrrafaesffcjkrw'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 # Store Image Folder name Media
