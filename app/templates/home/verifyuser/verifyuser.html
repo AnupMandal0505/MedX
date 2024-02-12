@@ -33,62 +33,74 @@
   padding: 0px;
   margin: 0px;
 }
-
 body {
-  background: #000000; /* fallback for old browsers */
-  background: var(--green);
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: var(--green);
 }
+
 .container {
-  border: 1px solid #f1f1f1;
   display: flex;
-  flex-flow: column;
-  height: fit-content;
-  width: fit-content;
-  padding: 3%;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-.form{
-  max-width: 50%;
-  background-color:white;
-  border: 2px solid black;
-  border-radius: 5px;
-  margin-left: 40%;
-  margin-top: 15%;
+margin-top:100px;
+  height: 40vh;
+  width:50%;
+  border:2px solid black;
+  border-radius:2px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.8); /* Box shadow */
+
 }
 
-input {
-  margin: 10px;
-  height: 35px;
-  width: 35px;
-  border: none;
-  border-radius: 3px;
+.otp-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+}
+
+.otp-input {
+  width: 50px;
+  height: 50px;
+  margin: 0 5px;
+  font-size: 1.5em;
   text-align: center;
-  font-size: 1.2rem;
-  background: #eef2f3;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  outline: none;
+}
 
-}
-.input:nth-child(1) {
-    cursor: pointer;
-    pointer-events: all;
-}
-button {
-  color: white;
-  font-size: 1.2rem;
-  width: 150px;
-  height: 40px;
-  margin: 25px auto 0px auto;
+.submit-btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #4caf50;
+  color: #fff;
   border: none;
   border-radius: 5px;
-  letter-spacing: 2px;
   cursor: pointer;
-  background: #616161; /* fallback for old browsers */
-  background: var(--blue)
+  transition: background-color 0.3s ease;
 }
-button:hover {
-  opacity: 0.8;
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
+@media screen and (max-width: 768px) {
+  .otp-input {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .otp-input {
+    width: 30px;
+    height: 30px;
+    font-size: 1em;
+  }
 }
 </style>
 
@@ -109,19 +121,19 @@ button:hover {
 
 
 
-  <div class="container form" >
-    <div id="inputs" class="inputs" >
-      <h2 style="text-align: center;">Enter OTP</h2>
-        <input class="OTP1" type="text" 
+  <div class="container" >
+    <h2 style="text-align: center;">Enter OTP</h2>
+
+    <div id="inputs" class="otp-container" >
+        <input class="otp-input OTP1" type="text" inputmode="numeric" maxlength="1" />
+        <input class="otp-input OTP2" type="text" 
             inputmode="numeric" maxlength="1" />
-        <input class="OTP2" type="text" 
+        <input class="otp-input OTP3" type="text" 
             inputmode="numeric" maxlength="1" />
-        <input class="OTP3" type="text" 
-            inputmode="numeric" maxlength="1" />
-        <input class="OTP4" type="text" 
+        <input class="otp-input OTP4" type="text" 
             inputmode="numeric" maxlength="1" />
     </div>
-    <button onclick="otp_checker()">SUBMIT</button>
+    <button class="submit-btn" onclick="otp_checker()">SUBMIT</button>
   </div>
 </body>
 </html>
