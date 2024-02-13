@@ -93,17 +93,17 @@ def edit_profile(request):
 
         if request.method == 'POST' and request.FILES.get('profile'):
             # Get the old profile picture URL from the user object or wherever it's stored
-            old_profile_url = request.user.profile
+            # old_profile_url = request.user.profile
             
-            # Extract the public ID from the old profile picture URL
-            old_public_id = urlparse(old_profile_url).path.split('/')[-1].split('.')[0]
+            # # Extract the public ID from the old profile picture URL
+            # old_public_id = urlparse(old_profile_url).path.split('/')[-1].split('.')[0]
             
-            try:
-                # Delete the old profile picture from Cloudinary
-                cloudinary.uploader.destroy(old_public_id, invalidate=True)
-            except cloudinary.api.Error as e:
-                # Handle any errors that may occur during deletion
-                return HttpResponseBadRequest("Failed to delete old profile picture: {}".format(str(e)))
+            # try:
+            #     # Delete the old profile picture from Cloudinary
+            #     cloudinary.uploader.destroy(old_public_id, invalidate=True)
+            # except cloudinary.api.Error as e:
+            #     # Handle any errors that may occur during deletion
+            #     return HttpResponseBadRequest("Failed to delete old profile picture: {}".format(str(e)))
 
             # Upload the new profile picture to Cloudinary
             profile = request.FILES['profile']

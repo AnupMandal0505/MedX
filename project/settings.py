@@ -160,8 +160,10 @@ CLOUDINARY = {
     # 'cloud_name': os.getenv('CLOUDINARY_CLOUD_NAME'),
     # 'api_key': os.getenv('CLOUDINARY_API_KEY'),
     # 'api_secret': os.getenv('CLOUDINARY_API_SECRET'),
-    'cloud_name' : 'da1jirhj8',
-    'api_key' : '662537589848594',
-    'api_secret' :' P9-xt_iyYK2b0wBDvon8riGT7kk',
+    'CLOUD_NAME' : 'da1jirhj8',
+    'API_KEY' : '662537589848594',
+    'API_SECRET' :' P9-xt_iyYK2b0wBDvon8riGT7kk',
 
 }
+
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
