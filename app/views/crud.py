@@ -74,6 +74,7 @@ def profile(request):
        
     return render(request,'dasboard/update_profile/profile.html')
 
+from django.http import HttpResponseBadRequest
 
 @login_required(login_url='signin')
 def edit_profile(request):
@@ -90,17 +91,51 @@ def edit_profile(request):
         us.email=email
         us.city = city
 
-        if 'profile' in request.FILES:
-            old_profile_url = us.profile
+        if request.method == 'POST' and request.FILES.get('profile'):
+            # Get the old profile picture URL from the user object or wherever it's stored
+            old_profile_url = request.user.profile
+            
+            # Extract the public ID from the old profile picture URL
             old_public_id = urlparse(old_profile_url).path.split('/')[-1].split('.')[0]
             
-            cloudinary.uploader.destroy(old_public_id, invalidate=True)
+            try:
+                # Delete the old profile picture from Cloudinary
+                cloudinary.uploader.destroy(old_public_id, invalidate=True)
+            except cloudinary.api.Error as e:
+                # Handle any errors that may occur during deletion
+                return HttpResponseBadRequest("Failed to delete old profile picture: {}".format(str(e)))
 
-
+            # Upload the new profile picture to Cloudinary
             profile = request.FILES['profile']
-            result = cloudinary.uploader.upload(profile, folder='MedX/profile')
-            url_cloudinary = result['url']
-            us.profile = url_cloudinary
+            try:
+                result = cloudinary.uploader.upload(profile, folder='MedX/profile')
+                # Get the URL of the newly uploaded profile picture
+                url_cloudinary = result['url']
+                
+                # Save the URL to the user object or wherever it needs to be stored
+                request.user.profile = url_cloudinary
+                request.user.save()
+                us.save()
+                # return redirect('dasboard')
+
+                
+                # return HttpResponse("Profile picture updated successfully!")
+            except cloudinary.api.Error as e:
+                # Handle any errors that may occur during upload
+                return HttpResponseBadRequest("Failed to upload new profile picture: {}".format(str(e)))
+    
+
+        # if 'profile' in request.FILES:
+        #     old_profile_url = us.profile
+        #     old_public_id = urlparse(old_profile_url).path.split('/')[-1].split('.')[0]
+            
+        #     cloudinary.uploader.destroy(old_public_id, invalidate=True)
+
+
+        #     profile = request.FILES['profile']
+        #     result = cloudinary.uploader.upload(profile, folder='MedX/profile')
+        #     url_cloudinary = result['url']
+        #     us.profile = url_cloudinary
 
         us.save()
         return redirect('dasboard')
