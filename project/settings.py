@@ -162,7 +162,7 @@ CLOUDINARY = {
     # 'api_secret': os.getenv('CLOUDINARY_API_SECRET'),
     'CLOUD_NAME' : 'da1jirhj8',
     'API_KEY' : '662537589848594',
-    'API_SECRET' :' P9-xt_iyYK2b0wBDvon8riGT7kk',
+    'API_SECRET' :'P9-xt_iyYK2b0wBDvon8riGT7kk',
 
 }
 
