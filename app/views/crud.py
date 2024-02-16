@@ -11,6 +11,7 @@ from django.contrib import messages
 from django.template.loader import render_to_string
 import cloudinary
 import cloudinary.uploader
+import cloudinary.api
 
 
 def mail_Forget_Password(first_name,email,otp):

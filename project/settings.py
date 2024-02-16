@@ -140,8 +140,8 @@ STATIC_ROOT = BASE_DIR / 'collectstatic'
 # smtp email send
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mastikipathshala828109@gmail.com'
-EMAIL_HOST_PASSWORD = 'rbrrafaesffcjkrw'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 
 # Store Image Folder name Media
@@ -160,10 +160,12 @@ CLOUDINARY = {
     # 'cloud_name': os.getenv('CLOUDINARY_CLOUD_NAME'),
     # 'api_key': os.getenv('CLOUDINARY_API_KEY'),
     # 'api_secret': os.getenv('CLOUDINARY_API_SECRET'),
-    'CLOUD_NAME' : 'da1jirhj8',
-    'API_KEY' : '662537589848594',
-    'API_SECRET' :'P9-xt_iyYK2b0wBDvon8riGT7kk',
+    "CLOUD_NAME" : 'da1jirhj8',
+    "API_KEY" : '662537589848594',
+    "API_SECRET" :'P9-xt_iyYK2b0wBDvon8riGT7kk',
 
 }
+
+
 
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
