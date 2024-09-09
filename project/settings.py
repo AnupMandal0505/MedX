@@ -25,13 +25,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-01ze@3+%gd%7vc3duqh&dssh*jji^m29%m!!gi-tpsz7pyqh$v'
+# Django settings
+DEBUG = os.getenv('DEBUG') == 'True'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
-ALLOWED_HOSTS = ['medx-z7bs.onrender.com', '127.0.0.1']
+
+# ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',')
 
 # ALLOWED_HOSTS = []
 
@@ -137,12 +138,20 @@ STATIC_ROOT = BASE_DIR / 'collectstatic'
 #     os.path.join(BASE_DIR, 'static'),
 # ]
 
+
+# Whitenoise configuration
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
 # smtp email send
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mastikipathshala828109@gmail.com'
-EMAIL_HOST_PASSWORD = 'rbrrafaesffcjkrw'
-EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
 
 # Store Image Folder name Media
 
@@ -156,16 +165,3 @@ MEDIA_URL = "/media/"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-CLOUDINARY = {
-    # 'cloud_name': os.getenv('CLOUDINARY_CLOUD_NAME'),
-    # 'api_key': os.getenv('CLOUDINARY_API_KEY'),
-    # 'api_secret': os.getenv('CLOUDINARY_API_SECRET'),
-    "CLOUD_NAME" : 'da1jirhj8',
-    "API_KEY" : '662537589848594',
-    "API_SECRET" :'P9-xt_iyYK2b0wBDvon8riGT7kk',
-
-}
-
-
-
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

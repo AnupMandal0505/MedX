@@ -1,3 +1,32 @@
-.env
-
 env
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.env
+
+# Media
+media/
+
+# Static files
+# staticfiles/
+
+# VSCode
+.vscode/
+
+# IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Environments
+venv/
+.env/

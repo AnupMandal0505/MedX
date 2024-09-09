@@ -4,7 +4,7 @@ from django.utils import timezone
 from .manager import UserManager
 
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
-from autoslug import AutoSlugField
+# from autoslug import AutoSlugField
 
 
 
